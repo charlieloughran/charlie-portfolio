@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
 import "../styles/Navbar.css";
 import SiteLogoDark from "../assets/charlie.png";
 import SiteLogoLight from "../assets/charlie-light.png";

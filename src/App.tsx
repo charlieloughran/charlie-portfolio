@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -21,7 +21,8 @@ function App() {
       </main>
 
       <BackToTop />
-      <Footer />
+      <Footer theme="light" />
+
     </>
   );
 }

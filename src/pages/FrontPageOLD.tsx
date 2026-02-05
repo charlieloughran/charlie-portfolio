@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import HopeMillImage from "../assets/charlie.png";
 import Button from "../components/Button";

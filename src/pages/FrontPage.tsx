@@ -1,5 +1,4 @@
 import { useState } from "react";
-import type { Project } from "../types";
 
 import Hero from "../components/Hero";
 import Featured from "../components/Featured";
@@ -9,13 +8,19 @@ import Contact from "../components/Contact";
 import ProjectModal from "../components/ProjectModal";
 import FeaturedProjectDetails from "../components/FeaturedProjectDetails";
 
-import projectsData from "../data/projects.json";
+
+// src/pages/FrontPage.tsx
+import projectsDataRaw from "../data/projects.json";
+import type { Project } from "../types";
+
+// Cast JSON to Project[]
+
 
 export default function FrontPage() {
   const [activePortfolioProject, setActivePortfolioProject] = useState<Project | null>(null);
   const [activeFeaturedProject, setActiveFeaturedProject] = useState<Project | null>(null);
 
-  const projects: Project[] = projectsData;
+const projects: Project[] = projectsDataRaw as Project[];
 
   const handleOpenFeatured = (project: Project) => {
     setActiveFeaturedProject(project);

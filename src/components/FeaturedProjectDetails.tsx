@@ -1,10 +1,7 @@
 import "../styles/FeaturedProjectDetails.css";
 import { useEffect, useRef  } from "react";
 
-type ContentBlock = 
-  | { type: "image"; src: string; alt: string }
-  | { type: "paragraph"; text: string }
-  | { type: "list"; items: string[] };
+import type { ContentBlock } from "../types";
 
 type Props = {
   title: string;
@@ -12,6 +9,7 @@ type Props = {
   content: ContentBlock[];
   onBack: () => void;
 };
+
 
 export default function FeaturedProjectDetails({ title, role, content, onBack }: Props) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -39,7 +37,10 @@ export default function FeaturedProjectDetails({ title, role, content, onBack }:
   }, []);
 
   const firstImageIndex = content.findIndex(b => b.type === "image");
-  const firstImage = firstImageIndex !== -1 ? content[firstImageIndex] : null;
+  const firstImage = content.find(
+    (block): block is { type: "image"; src: string; alt: string } =>
+      block.type === "image"
+  );
   const remainingContent = content.filter((_, i) => i !== firstImageIndex);
 
   return (
@@ -48,7 +49,7 @@ export default function FeaturedProjectDetails({ title, role, content, onBack }:
 
 
         <div className="details-header" ref={headerRef}>
-          <button className="back-btn" onClick={onBack}>
+                  <button className="back-btn" onClick={onBack}>
           &larr; Back
         </button>
           <h1>{title}</h1>

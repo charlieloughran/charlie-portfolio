@@ -1,4 +1,3 @@
-import React from "react";
 
 import Dark from "../assets/icons/mode-icon_Moon-White.png";
 import Light from "../assets/icons/mode-icon_Sun-Black.png";
