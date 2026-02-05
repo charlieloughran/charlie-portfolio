@@ -71,3 +71,16 @@ export default defineConfig([
   },
 ])
 ```
+
+
+# Portfolio
+
+My personal portfolio showcasing selected design and development work.
+
+Built with:
+- React
+- Vite
+- TypeScript
+
+Work in progress.
+
