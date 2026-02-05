@@ -1,0 +1,138 @@
+/* ================================
+   Overlay
+================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* ================================
+   Modal
+================================ */
+.featured-project-details {
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  
+  width: 100%;
+  max-width: 1400px;
+  max-height: 90vh;
+
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+
+  /* 🔑 Single scroll surface */
+  overflow-y: auto;
+
+  margin: 4rem auto;
+}
+
+/* ================================
+   Back button
+================================ */
+.back-btn {
+  background: none;
+  border: none;
+
+  color: var(--accent);
+  font-size: 1rem;
+  cursor: pointer;
+
+  padding: 24px 0px;
+
+  transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+  color: var(--secondary);
+}
+
+/* ================================
+   Sticky Header
+================================ */
+.details-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  padding: 32px;
+
+  background: transparent;
+
+  transition:
+    padding 0.3s ease,
+    background 0.2s ease,
+    backdrop-filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.details-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+
+  transition: font-size 0.25s ease, margin 0.25s ease;
+}
+
+.details-header .role {
+  font-size: 1rem;
+  color: var(--text-muted);
+
+  transition: font-size 0.25s ease, opacity 0.25s ease;
+}
+
+/* Header when scrolled */
+.details-header.shrunk {
+  padding: 16px 32px;
+  background: var(--bg), 0.1;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-header.shrunk h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.details-header.shrunk .role {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ================================
+   Content
+================================ */
+.details-container {
+  padding: 0 32px 32px;
+}
+
+.details-container img {
+  width: 100%;
+  max-width: 80%;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.details-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.details-container ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.details-container li {
+  margin-bottom: 0.5rem;
+}

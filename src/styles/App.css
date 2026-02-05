@@ -1,0 +1,128 @@
+/* ---------------- Reset & Base ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, #root, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 200px; /* adjust as needed */
+  width: 100%;
+}
+
+a, button {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ---------------- Theme Variables ---------------- */
+:root {
+  --bg: #033;
+  --bg-card: #022;
+  --secondary: rgb(255, 124, 181);
+  --accent: #099;
+  --hover: rgb(0, 97, 97);
+  --border: rgb(138, 173, 173);
+  --text-main: #f5f5f5;
+  --text-muted: rgb(138, 173, 173);
+}
+
+[data-theme="light"] {
+  --bg: rgb(212, 227, 227);
+  --bg-card:  rgb(241, 249, 249);
+  --secondary: rgb(46, 13, 27);
+  --accent: #099;
+  --hover: rgb(0, 97, 97);
+  --border: rgb(0, 88, 88);
+  --text-main: #033;
+  --text-muted: rgb(0, 88, 88);
+}
+
+/* ---------------- Typography ---------------- */
+h1 {
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+p, li {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Utility Text Classes */
+.text-xl {
+  font-size: 1.125rem;
+}
+
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.text-neutral-400 {
+  color: var(--text-muted);
+}
+
+.text-neutral-500 {
+  color: #8a8a8a;
+}
+
+/* ---------------- Section Layout ---------------- */
+.max-w-6xl {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.py-28 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.content {
+  width: 100%;
+  margin: 0 auto 4rem auto; /* centers the section */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

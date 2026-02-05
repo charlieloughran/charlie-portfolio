@@ -1,0 +1,126 @@
+/* =========================
+   FEATURED WORK - REFINED GLASSY
+   ========================= */
+
+
+
+.featured-section {
+  width: 90%;
+  max-width: 1200px;          /* keeps it from being too wide on large screens */
+  margin: 0 auto 4rem auto;   /* centers the section */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Each row */
+.featured-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 400px;
+  background: var(--bg-card);
+  border-radius: 20px;              /* rounded corners */
+  overflow: hidden;                 /* keep image/content inside border radius */
+  border: 1px solid transparent;
+  transition: border 0.6s ease, box-shadow 0.6s ease;
+   /* invisible by default */
+}
+
+/* Show border and subtle lift on hover */
+.featured-row:hover {
+  border: 1px solid var(--text-muted);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Alternate layout */
+.featured-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* IMAGE */
+.featured-image {
+  flex: 1 1 50%;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* CONTENT */
+.featured-content {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+
+  color: var(--text-main);
+}
+
+/* Alternate row content (just in case) */
+.featured-row.reverse .featured-content {
+  color: var(--text-main);
+}
+
+/* Typography */
+.featured-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.featured-content .role {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  opacity: 0.75;
+}
+
+.featured-content .description {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .featured-row,
+  .featured-row.reverse {
+    flex-direction: column;
+  }
+
+  .featured-image,
+  .featured-content {
+    flex: 1 1 100%;
+    min-height: 250px;
+    padding: 2rem;
+  }
+}
+
+/* ---------- Featured Project Link ---------- */
+.featured-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 1.5rem;                 /* moves link further down */
+  transition: transform 0.4s ease, color 0.4s ease; /* smoother movement */
+}
+
+/* Hover effect: move the whole link slightly */
+.featured-link:hover {
+  transform: translateX(5px);         /* subtle movement */
+  color: var(--accent);               /* optional accent color on hover */
+}
+
+/* Arrow spacing */
+.featured-link::after {
+  margin-left: 0.5rem;               /* spacing between text and arrow */
+  transition: margin-left 0.4s ease;  /* arrow moves with the link */
+}
+
+
+  

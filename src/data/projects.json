@@ -1,0 +1,102 @@
+[
+{
+    "id": 1,
+    "slug": "theatre-programmes",
+    "title": "Theatre Programmes",
+    "role": "Creative Artworker · LOCRN / HTDL",
+    "description": "Redesigned layout systems and typography to improve readability, accessibility, and visual consistency across theatre programmes.",
+
+    "image": "../public/images/HopeMillTheatre.PNG",
+
+    "featured": true,
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Redesigned layout systems and typography to improve readability, accessibility, and visual consistency across theatre programmes."
+      },
+      {
+        "type": "image",
+        "src": "../public/images/HopeMillTheatre.PNG",
+        "alt": "Hope Mill Theatre Programme Cover"
+      },
+      {
+        "type": "paragraph",
+        "text": "Worked closely with directors and production teams to understand branding and audience requirements, iterating on multiple layout options."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Redesigned title hierarchy for better readability",
+          "Improved typography consistency across productions",
+          "Enhanced accessibility with clear color contrast"
+        ]
+      },
+      {
+        "type": "image",
+        "src": "/images/HopeMillTheatre2.PNG",
+        "alt": "Interior layout example"
+      },
+      {
+        "type": "paragraph",
+        "text": "The final result was praised for its clarity and professional design, helping audiences navigate content quickly and enjoyably."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "scriptmate",
+    "title": "ScriptMate",
+    "role": "UX Design · Mobile",
+    "description": "Designed core user flows...",
+    "image": "../public/images/ScriptMate.png",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Worcester Warriors Website",
+    "role": "UX · Web Design",
+    "description": "Improved navigation and page hierarchy to better support content-heavy sports and event information.",
+    "image": "../public/images/HopeMillTheatre.PNG",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "Hope Mill Theatre",
+    "role": "3D Environment · Blender",
+    "description": "Created a detailed 3D environment for theatre visualisation and client communication.",
+    "image": "../public/images/HopeMillTheatre.PNG",
+    "featured": true
+  },
+    {
+    "id": 5,
+    "title": "Theatre Programmes",
+    "role": "Designer",
+    "description": "Programme design for theatre productions.",
+    "image": "../public/images/HopeMillTheatre.PNG",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "ScriptMate",
+    "role": "UX Designer",
+    "description": "A writing companion app for playwrights.",
+    "image": "../public/images/HopeMillTheatre.PNG",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "ScriptMate",
+    "role": "UX Designer",
+    "description": "A writing companion app for playwrights.",
+    "image": "../public/images/HopeMillTheatre.PNG",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "ScriptMate",
+    "role": "UX Designer",
+    "description": "A writing companion app for playwrights.",
+    "image": "../public/images/HopeMillTheatre.PNG",
+    "featured": false
+  }
+]

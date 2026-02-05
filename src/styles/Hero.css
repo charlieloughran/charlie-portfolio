@@ -1,0 +1,63 @@
+/* Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 50vh;               /* full viewport height */
+  display: flex;
+  align-items: center;         /* vertical centering */
+  justify-content: center;     /* horizontal centering */
+  background: var(--bg);
+  overflow: hidden;
+  text-align: center;          /* center text inside container */
+  padding: 0 4rem; 
+  margin-bottom: 10vh;            /* small horizontal padding */
+}
+
+/* Inner container aligned and centered */
+.hero-inner {
+  width: 90%;                  /* same as other sections */
+  max-width: 1200px;           /* matches other sections */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;         /* center all inner content */
+}
+
+/* Headline */
+.hero-inner h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+/* Subtitle */
+.hero-inner p {
+  font-size: 1.25rem;
+  max-width: 720px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* Buttons container */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  justify-content: center;     /* center buttons */
+}
+
+
+@media (max-width: 768px) {
+  .hero-inner h1 {
+    font-size: 2.75rem;
+  }
+  .hero-inner p {
+    font-size: 1.125rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

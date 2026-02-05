@@ -1,0 +1,69 @@
+.btn-group {
+    display: flex;
+    gap: 16px;
+
+}
+
+
+.btn {
+  display: inline-flex;        /* from Figma */
+  padding: 8px 32px;
+  justify-content: center;     /* center content horizontally */
+  align-items: center;         /* center content vertically */
+  gap: 10px;                   /* spacing between child elements */
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  
+}
+
+.btn-primary {
+    background: #099;
+    color: #fff;
+    border: 1px solid #099;
+
+    
+}
+
+.btn-primary:hover {
+  background-color: var(--hover);
+  color: var(--bg);
+  border: 1px solid #099;
+  transform: translateY(2px);
+  transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
+
+}
+
+.btn-secondary {
+  color: var(--text-main);
+  background-color: var(--secondary);
+  border: 1px solid transparent;
+
+
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  transform: translateY(2px);
+  transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
+}
+
+.btn-outline {
+  background: none;
+  color: var(--text-main);
+  border-color: #fff ;
+  border: 1px solid var(--accent);
+
+}
+
+.btn-outline:hover {
+  background-color: var(--hover);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  transform: translateY(2px);
+  transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.6s ease;
+
+}
