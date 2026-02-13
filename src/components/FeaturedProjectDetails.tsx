@@ -1,75 +1,58 @@
-import { motion, AnimatePresence } from "framer-motion";
+// src/components/FeaturedProjectDetails.tsx
+import { useEffect } from "react";
 import type { Project } from "../types";
+import "../styles/FeaturedProjectDetails.css";
 
-type FeaturedProjectDetailsProps = {
-  project: Project | null;
+type Props = {
+  project: Project;
   onBack: () => void;
 };
 
-const FeaturedProjectDetails = ({ project, onBack }: FeaturedProjectDetailsProps) => {
+export default function FeaturedProjectDetails({ project, onBack }: Props) {
+  // Lock body scroll while modal is open
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, []);
+
   return (
-    <AnimatePresence>
-      {project && (
-        <motion.div
-          className="overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          onClick={onBack} // clicking outside closes
-        >
-          <motion.div
-            className="featured-project-details"
-            initial={{ y: 50, opacity: 0, scale: 0.95 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 50, opacity: 0, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 150, damping: 20 }}
-            onClick={(e) => e.stopPropagation()} // prevent overlay click
-          >
-            <button className="back-btn" onClick={onBack}>
-              ← Back
-            </button>
+    <div className="overlay">
+      <div className="featured-project-details">
+        {/* Hero */}
+        <div className="hero-image-container">
+          <img src={project.hero.image} alt={project.hero.title} />
+        </div>
 
-            {/* Hero Image */}
-            {project.hero.image && (
-              <div className="hero-image-container">
-                <img src={project.hero.image} alt={project.hero.title} />
-              </div>
-            )}
+        <div className="hero-header">
+          <button className="back-btn" onClick={onBack}>
+            &larr; Back
+          </button>
+          <h1>{project.hero.title}</h1>
+          <p>{project.hero.subtitle}</p>
+        </div>
 
-            {/* Title and role */}
-            <div className="hero-header">
-              <h1>{project.hero.title}</h1>
-              <p className="hero-role">{project.sidebar.role}</p>
-            </div>
+        {/* Content */}
+        <div className="project-content">
+          {/* Render raw WordPress HTML */}
+          <div
+            className="content-html"
+            dangerouslySetInnerHTML={{ __html: project.content }}
+          />
+        </div>
 
-            {/* Content / excerpt */}
-            <div className="content-area">
-              <div className="content-left">
-                <div
-                  className="details-container"
-                  dangerouslySetInnerHTML={{ __html: project.summary }}
-                />
-              </div>
-
-              <div className="content-right">
-                {project.sidebar.metrics.length > 0 && (
-                  <>
-                    <h4>Metrics</h4>
-                    <ul className="hero-metrics">
-                      {project.sidebar.metrics.map((m, idx) => (
-                        <li key={idx}>{m}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        {/* Sidebar */}
+        <div className="project-sidebar">
+          <p className="hero-role">{project.sidebar.role}</p>
+          <ul className="hero-metrics">
+            {project.sidebar.metrics.map((metric, idx) => (
+              <li key={idx}>{metric}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default FeaturedProjectDetails;
+}
