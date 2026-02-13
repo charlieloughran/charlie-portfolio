@@ -12,7 +12,7 @@ const InProgress = () => {
         </div>
       <div className="in-progress-content">
         <h1>Time for an upgrade</h1>
-        <p>Portfolio site inbound</p>
+        <p>Portfolio site inbound... soon</p>
 
         <div className="progress-bar">
           <div className="progress-fill"></div>
