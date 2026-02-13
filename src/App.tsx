@@ -5,13 +5,15 @@ import Navbar from "./components/Navbar";
 import BackToTop from "./components/BackToTop";
 import Footer from "./components/Footer";
 import FrontPage from "./pages/FrontPage";
+import InProgress from "./pages/InProgress";
 
 import "./styles/App.css"
 
 function App() {
   return (
     <>
-      <Navbar />
+    <InProgress/>
+      {/* <Navbar />
 
       <main>
         <Routes>
@@ -21,7 +23,7 @@ function App() {
       </main>
 
       <BackToTop />
-      <Footer theme="light" />
+      <Footer theme="light" /> */}
 
     </>
   );

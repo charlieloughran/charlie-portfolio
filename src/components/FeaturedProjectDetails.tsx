@@ -11,12 +11,20 @@ type Props = {
 export default function FeaturedProjectDetails({ project, onBack }: Props) {
   // Lock body scroll while modal is open
   useEffect(() => {
-    const original = document.body.style.overflow;
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
+    // Push the project slug into the URL
+    const originalPath = window.location.pathname;
+    window.history.pushState(null, "", `/projects/${project.slug}`);
+
     return () => {
-      document.body.style.overflow = original;
+      document.body.style.overflow = originalOverflow;
+
+      // Reset URL back to original
+      window.history.pushState(null, "", originalPath);
     };
-  }, []);
+  }, [project.slug]);
 
   return (
     <div className="overlay">
@@ -36,7 +44,6 @@ export default function FeaturedProjectDetails({ project, onBack }: Props) {
 
         {/* Content */}
         <div className="project-content">
-          {/* Render raw WordPress HTML */}
           <div
             className="content-html"
             dangerouslySetInnerHTML={{ __html: project.content }}
