@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "../types";
-
 import "../styles/ProjectModal.css";
 
 type ProjectModalProps = {
@@ -20,7 +19,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           onClick={onClose}
         >
           <motion.div
-            className="modal-content"
+            className="modal-container"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
@@ -30,18 +29,25 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
               ×
             </button>
 
-            <div
-              className="modal-image"
-              style={{
-                backgroundImage: project.image
-                  ? `url(${project.image})`
-                  : undefined,
-              }}
-            />
+            {/* Hero Image */}
+            {project.hero.image && (
+              <div
+                className="modal-image"
+                style={{ backgroundImage: `url(${project.hero.image})` }}
+              />
+            )}
+            <div className="modal-content">
+            {/* Title */}
+            <h3 className="text-xl font-semibold">{project.hero.title}</h3>
 
-            <h3 className="text-xl font-semibold">{project.title}</h3>
-            <p className="text-sm text-neutral-400">{project.role}</p>
-            <p className="text-sm text-neutral-500">{project.description}</p>
+            {/* Description / Excerpt */}
+            {project.summary && (
+              <div
+                className="text-sm text-neutral-500"
+                dangerouslySetInnerHTML={{ __html: project.summary }}
+              />
+            )}
+            </div>
           </motion.div>
         </motion.div>
       )}

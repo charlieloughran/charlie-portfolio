@@ -5,50 +5,90 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem 1rem;
 }
 
 /* ================================
-   Modal
+   Modal container
 ================================ */
 .featured-project-details {
   background: var(--bg-card);
   border: 2px solid var(--accent);
-  
   width: 100%;
   max-width: 1400px;
   max-height: 90vh;
-
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
-
-  /* 🔑 Single scroll surface */
   overflow-y: auto;
-
-  margin: 4rem auto;
+  position: relative;
 }
 
 /* ================================
-   Back button
+   Hero image
 ================================ */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================
+   Header overlay
+================================ */
+.hero-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  padding: 32px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.hero-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  transition: font-size 0.25s ease;
+}
+
+.hero-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+  transition: font-size 0.25s ease;
+}
+
+/* Back button */
 .back-btn {
   background: none;
   border: none;
-
   color: var(--accent);
-  font-size: 1rem;
   cursor: pointer;
-
-  padding: 24px 0px;
-
+  font-size: 1rem;
+  padding: 8px 0;
+  margin-bottom: 4px;
+  align-self: flex-start;
   transition: color 0.2s ease;
 }
 
@@ -56,83 +96,32 @@
   color: var(--secondary);
 }
 
-/* ================================
-   Sticky Header
-================================ */
-.details-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* Wordpress Content (imported) */
 
-  padding: 32px;
 
-  background: transparent;
-
-  transition:
-    padding 0.3s ease,
-    background 0.2s ease,
-    backdrop-filter 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.details-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-
-  transition: font-size 0.25s ease, margin 0.25s ease;
-}
-
-.details-header .role {
-  font-size: 1rem;
-  color: var(--text-muted);
-
-  transition: font-size 0.25s ease, opacity 0.25s ease;
-}
-
-/* Header when scrolled */
-.details-header.shrunk {
-  padding: 16px 32px;
-  background: var(--bg), 0.1;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.details-header.shrunk h1 {
-  font-size: 1.6rem;
-  margin-bottom: 0.25rem;
-}
-
-.details-header.shrunk .role {
-  font-size: 0.85rem;
-  opacity: 0.8;
+.project-content {
+  padding: 4em;
 }
 
 /* ================================
-   Content
+   Responsive
 ================================ */
-.details-container {
-  padding: 0 32px 32px;
+@media (max-width: 900px) {
+  .content-area {
+    flex-direction: column;
+  }
+
+  .content-right {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 2rem;
+    position: relative; /* stop sticky on small screens */
+    top: auto;
+  }
+
+  .content-left {
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 
-.details-container img {
-  width: 100%;
-  max-width: 80%;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.details-container p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-main);
-}
-
-.details-container ul {
-  padding-left: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-
-.details-container li {
-  margin-bottom: 0.5rem;
-}

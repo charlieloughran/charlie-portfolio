@@ -1,83 +1,75 @@
-import "../styles/FeaturedProjectDetails.css";
-import { useEffect, useRef  } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import type { Project } from "../types";
 
-import type { ContentBlock } from "../types";
-
-type Props = {
-  title: string;
-  role: string;
-  content: ContentBlock[];
+type FeaturedProjectDetailsProps = {
+  project: Project | null;
   onBack: () => void;
 };
 
-
-export default function FeaturedProjectDetails({ title, role, content, onBack }: Props) {
-  const modalRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const modal = modalRef.current;
-    const header = headerRef.current;
-    if (!modal || !header) return;
-
-    const onScroll = () => {
-      header.classList.toggle("scrolled", modal.scrollTop > 8);
-      header.classList.toggle("shrunk", modal.scrollTop > 80);
-    };
-
-    modal.addEventListener("scroll", onScroll);
-    return () => modal.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Lock background scroll
-  useEffect(() => {
-    const original = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = original; };
-  }, []);
-
-  const firstImageIndex = content.findIndex(b => b.type === "image");
-  const firstImage = content.find(
-    (block): block is { type: "image"; src: string; alt: string } =>
-      block.type === "image"
-  );
-  const remainingContent = content.filter((_, i) => i !== firstImageIndex);
-
+const FeaturedProjectDetails = ({ project, onBack }: FeaturedProjectDetailsProps) => {
   return (
-    <div className="overlay">
-      <div className="featured-project-details" ref={modalRef}>
+    <AnimatePresence>
+      {project && (
+        <motion.div
+          className="overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={onBack} // clicking outside closes
+        >
+          <motion.div
+            className="featured-project-details"
+            initial={{ y: 50, opacity: 0, scale: 0.95 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 50, opacity: 0, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 150, damping: 20 }}
+            onClick={(e) => e.stopPropagation()} // prevent overlay click
+          >
+            <button className="back-btn" onClick={onBack}>
+              ← Back
+            </button>
 
+            {/* Hero Image */}
+            {project.hero.image && (
+              <div className="hero-image-container">
+                <img src={project.hero.image} alt={project.hero.title} />
+              </div>
+            )}
 
-        <div className="details-header" ref={headerRef}>
-                  <button className="back-btn" onClick={onBack}>
-          &larr; Back
-        </button>
-          <h1>{title}</h1>
-          <p className="role">{role}</p>
-        </div>
+            {/* Title and role */}
+            <div className="hero-header">
+              <h1>{project.hero.title}</h1>
+              <p className="hero-role">{project.sidebar.role}</p>
+            </div>
 
-        {/* Normal flowing content */}
-        <div className="details-container">
-          {firstImage && <img src={firstImage.src} alt={firstImage.alt} />}
+            {/* Content / excerpt */}
+            <div className="content-area">
+              <div className="content-left">
+                <div
+                  className="details-container"
+                  dangerouslySetInnerHTML={{ __html: project.summary }}
+                />
+              </div>
 
-          {remainingContent.map((block, i) => {
-            switch (block.type) {
-              case "image":
-                return <img key={i} src={block.src} alt={block.alt} />;
-              case "paragraph":
-                return <p key={i}>{block.text}</p>;
-              case "list":
-                return (
-                  <ul key={i}>
-                    {block.items.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                );
-            }
-          })}
-        </div>
-      </div>
-    </div>
+              <div className="content-right">
+                {project.sidebar.metrics.length > 0 && (
+                  <>
+                    <h4>Metrics</h4>
+                    <ul className="hero-metrics">
+                      {project.sidebar.metrics.map((m, idx) => (
+                        <li key={idx}>{m}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
-}
+};
+
+export default FeaturedProjectDetails;

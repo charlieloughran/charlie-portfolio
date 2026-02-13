@@ -1,17 +1,17 @@
 // src/types.ts
-
-export type ContentBlock =
-  | { type: "image"; src: string; alt: string }
-  | { type: "paragraph"; text: string }
-  | { type: "list"; items: string[] };
-
 export type Project = {
   id: number;
-  title: string;
-  role: string;
-  description: string;
-  image: string;
-  content?: ContentBlock[]; // optional rich content
+  slug: string;
   featured: boolean;
-  slug: string; // add slug if you want URL navigation
+  hero: {
+    image: string;
+    title: string;
+    subtitle: string;
+  };
+  sidebar: {
+    role: string;
+    metrics: string[];
+  };
+  summary: string;
+  content: string; // HTML directly from WordPress
 };
