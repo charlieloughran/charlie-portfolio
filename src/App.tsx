@@ -1,10 +1,10 @@
 
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import BackToTop from "./components/BackToTop";
-import Footer from "./components/Footer";
-import FrontPage from "./pages/FrontPage";
+// import Navbar from "./components/Navbar";
+// import BackToTop from "./components/BackToTop";
+// import Footer from "./components/Footer";
+// import FrontPage from "./pages/FrontPage";
 import InProgress from "./pages/InProgress";
 
 import "./styles/App.css"

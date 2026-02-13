@@ -19,7 +19,7 @@ async function fetchWP(endpoint: string) {
 // Map WP post to Project
 function mapPostToProject(post: any): Project {
   // Extract categories as slug and id
-  const categories = post.categories || [];
+  // const categories = post.categories || [];
   const categorySlugs = post._embedded?.["wp:term"]?.flat()?.map((c: any) => c.slug) || [];
 
   return {
