@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import "../styles/Navbar.css";
-import SiteLogoDark from "../assets/charlie.png";
-import SiteLogoLight from "../assets/charlie-light.png";
+import SiteLogoDark from "../assets/CharlieLogo2026_CL.png";
+import SiteLogoLight from "../assets/CharlieLogo2026_CL-light.png";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
@@ -58,10 +58,10 @@ export default function Navbar() {
 
       {/* Center links */}
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
-        <a href="#featured" onClick={closeMenu}>Featured</a>
-        <a href="#projects" onClick={closeMenu}>Projects</a>
-        <a href="#about" onClick={closeMenu}>About</a>
-        <a href="#contact" onClick={closeMenu}>Contact</a>
+        {/* <a href="/#featured" onClick={closeMenu}>Featured</a> */}
+        <a href="/#portfolio" onClick={closeMenu}>Portfolio</a>
+        <a href="/#about" onClick={closeMenu}>About</a>
+        <a href="/#contact" onClick={closeMenu}>Contact</a>
 
 
         {/* Theme toggle only inside mobile menu */}

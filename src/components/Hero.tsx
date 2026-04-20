@@ -28,7 +28,7 @@ const Hero = () => {
         </motion.p>
 
         <div className="hero-buttons">
-          <a href="#featured">
+          <a href="/#portfolio">
             <Button type="button" variant="primary">
               View Work
             </Button>

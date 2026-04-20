@@ -2,16 +2,19 @@
 export type Project = {
   id: number;
   slug: string;
+  category: string;
   featured: boolean;
   hero: {
     image: string;
     title: string;
-    subtitle: string;
   };
   sidebar: {
     role: string;
     metrics: string[];
   };
-  summary: string;
-  content: string; // HTML directly from WordPress
+  content: {
+    overview: string;
+    approach: string;
+    images: string[];
+  };
 };

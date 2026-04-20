@@ -7,7 +7,10 @@ const About = () => {
     <section id="about" className="about-section">
       <div className="about-inner">
         {/* Image */}
-        <div className="about-image" />
+        <div className="about-image">
+          <img src="/images/charlie-loughran.png" alt="Charlie sat on a wall in front of Charles' Bridge"></img>
+        </div>
+                
 
         {/* Content */}
         <div className="about-content">

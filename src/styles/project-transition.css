@@ -1,0 +1,33 @@
+/* Wrapper controls transition */
+.project-wrapper {
+  animation: slideIn 0.35s ease forwards;
+}
+
+/* optional exit state (for future enhancement) */
+.project-wrapper.exiting {
+  animation: slideOut 0.25s ease forwards;
+}
+
+/* ENTRY animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* EXIT animation (optional but nice) */
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

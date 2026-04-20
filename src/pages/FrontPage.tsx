@@ -1,43 +1,89 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
 import Hero from "../components/Hero";
-import Featured from "../components/Featured";
-import Portfolio from "../components/Portfolio";
 import About from "../components/About";
 import Contact from "../components/Contact";
-import ProjectModal from "../components/ProjectModal";
-import FeaturedProjectDetails from "../components/FeaturedProjectDetails";
+import Portfolio from "../components/Portfolio";
+import ProjectDetail from "../components/ProjectDetail";
 
 import type { Project } from "../types";
-import { useState } from "react";
+import { projects } from "../data/projects";
+
+import "../styles/project-transition.css"
 
 export default function FrontPage() {
-  const [activePortfolioProject, setActivePortfolioProject] = useState<Project | null>(null);
-  const [activeFeaturedProject, setActiveFeaturedProject] = useState<Project | null>(null);
+const { slug } = useParams();
+const navigate = useNavigate();
 
-  const handleOpenFeatured = (project: Project) => setActiveFeaturedProject(project);
-  const handleCloseFeatured = () => setActiveFeaturedProject(null);
+const [selectedProject, setSelectedProject] = useState<Project | null>(null);  const [isTransitioning, setIsTransitioning] = useState(false);
+
+
+
+const openProject = (project: Project) => {
+  setIsTransitioning(true);
+
+  // smooth scroll to top BEFORE switching view
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  setTimeout(() => {
+    setSelectedProject(project);
+    setIsTransitioning(false);
+  }, 250);
+};
+
+useEffect(() => {
+  if (!slug) return;
+
+  const project = projects.find((p) => p.slug === slug);
+
+  if (project) {
+    setSelectedProject(project);
+  }
+}, [slug]);
+
+const closeProject = () => {
+  setIsTransitioning(true);
+  setSelectedProject(null);
+  navigate("/");
+
+  // smooth scroll to top when returning to portfolio
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  setTimeout(() => {
+    setSelectedProject(null);
+    setIsTransitioning(false);
+  }, 250);
+};
+
+  const isProjectOpen = selectedProject !== null;
 
   return (
     <>
-      <Hero />
+      {/* HERO disappears when project is open */}
+      {!isProjectOpen && <Hero />}
 
-      <Featured onSelect={handleOpenFeatured} />
-      <Portfolio onSelect={setActivePortfolioProject} />
-
-      <About />
-      <Contact />
-
-      {activeFeaturedProject && (
-        <FeaturedProjectDetails
-          project={activeFeaturedProject}
-          onBack={handleCloseFeatured}
-        />
+      {/* MAIN CONTENT */}
+      {!isProjectOpen ? (
+        <Portfolio onSelect={openProject} />
+      ) : (
+        <div
+          className={`project-wrapper ${
+            isTransitioning ? "exiting" : "entering"
+          }`}
+        >
+          <ProjectDetail
+            project={selectedProject}
+            onBack={closeProject}
+          />
+        </div>
       )}
 
-      {activePortfolioProject && (
-        <ProjectModal
-          project={activePortfolioProject}
-          onClose={() => setActivePortfolioProject(null)}
-        />
+      {!isProjectOpen && (
+        <>
+          <About />
+          <Contact />
+        </>
       )}
     </>
   );

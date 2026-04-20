@@ -1,8 +1,8 @@
 import React from "react";
 import "../styles/Footer.css";
 
-import SiteLogoDark from "../assets/charlie.png";
-import SiteLogoLight from "../assets/charlie-light.png";
+import SiteLogoDark from "../assets/CharlieLogo2026_CL.png";
+import SiteLogoLight from "../assets/CharlieLogo2026_CL-Light.png";
 
 interface FooterProps {
   theme: "light" | "dark"; // receive theme from parent
@@ -13,11 +13,8 @@ const Footer: React.FC<FooterProps> = ({ theme }) => {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-logo">
-          <img
-            src={theme === "dark" ? SiteLogoLight : SiteLogoDark}
-            alt="Charlie Loughran Logo"
-            className="logo-image"
-          />
+          <img src={theme === "dark" ? SiteLogoLight : SiteLogoDark} alt="Logo" className="logo-image"/>
+
         </div>
 
         <div className="footer-links">

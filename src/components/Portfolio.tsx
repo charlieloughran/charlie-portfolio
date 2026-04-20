@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import type { Project } from "../types";
+
+import { useNavigate } from "react-router-dom";
 import "../styles/Portfolio.css";
-import { getAllPosts } from "../api/wordpress";
+import "../styles/Button.css";
+import { projects as projectData } from "../data/projects";
 
 type PortfolioProps = {
   onSelect: (project: Project) => void;
@@ -9,39 +12,83 @@ type PortfolioProps = {
 
 const Portfolio = ({ onSelect }: PortfolioProps) => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [filtered, setFiltered] = useState<Project[]>([]);
+  const [activeFilter, setActiveFilter] = useState<string>("All");
 
   useEffect(() => {
-    getAllPosts()
-      .then((posts) => {
-        // Sort alphabetically by title
-        const sorted = posts.sort((a, b) =>
-          a.hero.title.localeCompare(b.hero.title)
-        );
-        setProjects(sorted);
-      })
-      .catch(console.error);
+    const sorted = [...projectData].sort((a, b) =>
+      a.hero.title.localeCompare(b.hero.title)
+    );
+
+    setProjects(sorted);
+    setFiltered(sorted);
   }, []);
 
-  if (!projects.length) return null;
+  const categories = [
+    "All",
+    ...Array.from(
+      new Set(projects.map((p) => p.category || "Other"))
+    ),
+  ];
+
+  const handleFilter = (category: string) => {
+    setActiveFilter(category);
+
+    if (category === "All") {
+      setFiltered(projects);
+    } else {
+      setFiltered(
+        projects.filter((p) => (p.category || "Other") === category)
+      );
+    }
+  };
+
+  const navigate = useNavigate();
 
   return (
     <section id="portfolio" className="portfolio-section">
+      {/* Filters */}
+      <div className="portfolio-filters">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`btn btn-outline ${
+              activeFilter === cat ? "active" : ""
+            }`}
+            onClick={() => handleFilter(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Grid */}
       <div className="portfolio-grid">
-        {projects.map((project) => (
+        {filtered.map((project) => (
           <div
             key={project.id}
             className="portfolio-card"
-            onClick={() => onSelect(project)}
+            onClick={() => {
+  onSelect(project);
+  navigate(`/projects/${project.slug}`);
+}}
           >
-            {/* Image as div for consistent aspect ratio */}
             <div
               className="portfolio-image"
               style={{
                 backgroundImage: `url(${project.hero.image})`,
               }}
-            />
+            >
+              <span className={`portfolio-tag ${project.category.toLowerCase()}`}>
+  {project.category}
+</span>
 
-            {/* Info section */}
+              <div className="portfolio-overlay">
+                <h3>{project.hero.title}</h3>
+                <span>View Project →</span>
+              </div>
+            </div>
+            
             <div className="portfolio-info">
               <h3>{project.hero.title}</h3>
               <p>{project.sidebar.role}</p>
