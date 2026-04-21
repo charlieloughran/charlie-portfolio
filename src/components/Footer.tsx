@@ -1,8 +1,8 @@
 import React from "react";
 import "../styles/Footer.css";
 
-import SiteLogoDark from "../assets/CharlieLogo2026_CL.png";
-import SiteLogoLight from "../assets/CharlieLogo2026_CL-Light.png";
+import SiteLogoDark from "src/assets/CharlieLogo2026_CL.png";
+import SiteLogoLight from "src/assets/CharlieLogo2026_CL-Light.png";
 
 interface FooterProps {
   theme: "light" | "dark"; // receive theme from parent
