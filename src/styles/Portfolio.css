@@ -145,8 +145,9 @@
   font-size: 0.7rem;
   letter-spacing: 0.05em;
 
-  background: var(--accent);
-  color: var(--text-main);
+  background: rgba(0, 153, 153, 0.85);
+  border: 1px solid var(--accent);
+  color: #f7f7f7;
 
   border-radius: 999px;
   backdrop-filter: blur(6px);
