@@ -15,7 +15,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          UX & Digital Designer
+          Aspiring UX & Digital Designer
         </motion.h1>
 
         <motion.p
@@ -34,9 +34,9 @@ const Hero = () => {
             </Button>
           </a>
 
-          <a href="#contact">
+          <a href="https://linkedin.com/in/charlie-loughran" target="_blank">
             <Button type="button" variant="outline">
-              Contact Me
+              Connect with me
             </Button>
           </a>
         </div>

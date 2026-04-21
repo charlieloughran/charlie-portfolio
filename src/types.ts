@@ -10,11 +10,18 @@ export type Project = {
   };
   sidebar: {
     role: string;
+    timeline?: string;
     metrics: string[];
   };
+
   content: {
+    problem?: string;
     overview: string;
     approach: string;
+    decisions?: { question: string; answer: string }[];
+    outcome?: string;
+    nextSteps?: string[];
     images: string[];
   };
-};
+
+}

@@ -1,5 +1,6 @@
 
 import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import Navbar from "./components/Navbar";
 import BackToTop from "./components/BackToTop";
@@ -9,11 +10,29 @@ import FrontPage from "./pages/FrontPage";
 
 import "./styles/App.css"
 
+
 function App() {
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme") as "light" | "dark" | null;
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    const initial = saved ?? (prefersLight ? "light" : "dark");
+
+    setTheme(initial);
+    document.documentElement.setAttribute("data-theme", initial);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    localStorage.setItem("theme", next);
+    document.documentElement.setAttribute("data-theme", next);
+  };
+
   return (
     <>
-    {/* <InProgress/> */}
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       <main>
         <Routes>
@@ -23,8 +42,7 @@ function App() {
       </main>
 
       <BackToTop />
-      <Footer theme="light" />
-
+      <Footer theme={theme} />
     </>
   );
 }
