@@ -168,7 +168,7 @@
 .project-next-steps li {
   font-size: 0.85rem;
   color: var(--text-muted);
-  background: #f5f5f5;
+  background: var(--bg-card);
   border-radius: 20px;
   padding: 0.3rem 0.85rem;
 }

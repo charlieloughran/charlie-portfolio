@@ -41,7 +41,7 @@ a:hover {
   --hover: rgb(0, 97, 97);
   --border: rgb(138, 173, 173);
   --text-main: #f5f5f5;
-  --text-muted: rgb(138, 173, 173);
+  --text-muted: rgb(187, 220, 220);
 }
 
 [data-theme="light"] {
