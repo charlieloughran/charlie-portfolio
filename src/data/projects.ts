@@ -165,7 +165,7 @@ content: {
       timeline: "March 2026",
       metrics: [
         "Type: Dashboard Redesign",
-        "Client: University of Salford",
+        "Team: University of Salford",
         "Deliverables: UX/UI prototype in Figma",
         "Tools: Figma, Claude",
       ],

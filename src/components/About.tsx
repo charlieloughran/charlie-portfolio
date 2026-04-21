@@ -14,17 +14,13 @@ const About = () => {
 
         {/* Content */}
         <div className="about-content">
-          <h2>About Me</h2>
+          <h2>Hey, I'm Charlie!</h2>
           <p>
-            I’m a UX & Digital Designer passionate about creating intuitive and
-            delightful experiences. With experience across web, mobile, and
-            interactive media, I focus on clarity, usability, and design that
-            connects with users.
+I believe every product deserves to be the best version of itself, and good design is how you get there. Working across print, brand, marketing, and digital product design, I've seen the same thing play out every time: thoughtful design makes life easier, thoughtless design makes it harder.
           </p>
           <p>
-            I love turning complex problems into simple, elegant solutions, and
-            constantly learning new tools and techniques to stay at the
-            forefront of design and technology.
+           I put a lot of heart into what I do, and I think the best work comes from teams that value each other as much as they value the outcome. I'm looking to move into UX and product roles where design can have a real impact, helping build a future that works a little better for everyone.
+
           </p>
         </div>
       </div>

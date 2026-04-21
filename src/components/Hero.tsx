@@ -15,7 +15,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Aspiring UX & Digital Designer
+          Multidisciplinary Designer
         </motion.h1>
 
         <motion.p
@@ -23,8 +23,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Designing clear, usable digital experiences across web, mobile,
-          motion, and interactive media.
+          If it can be designed, I've probably had a go at it.
         </motion.p>
 
         <div className="hero-buttons">
