@@ -16,10 +16,14 @@ const About = () => {
         <div className="about-content">
           <h2>Hey, I'm Charlie!</h2>
           <p>
-I believe every product deserves to be the best version of itself, and good design is how you get there. Working across print, brand, marketing, and digital product design, I've seen the same thing play out every time: thoughtful design makes life easier, thoughtless design makes it harder.
+I care a lot about design.
+
+ 
+
           </p>
+          <p>Whatever I'm working on, I think about the whole process. Not just how it looks, but how it's built, delivered, and maintained with as little friction as possible.</p>
           <p>
-           I put a lot of heart into what I do, and I think the best work comes from teams that value each other as much as they value the outcome. I'm looking to move into UX and product roles where design can have a real impact, helping build a future that works a little better for everyone.
+I've worked across print, brand, marketing, and digital, and what I've taken from all of it so far is that thoughtful design genuinely makes a difference. I'm still early in my journey, but I bring a lot of curiosity, care, and a willingness to learn from everyone around me.
 
           </p>
         </div>

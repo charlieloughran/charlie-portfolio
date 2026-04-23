@@ -8,8 +8,7 @@ const Contact = () => {
     <section id="contact" className="contact-section-minimal">
       <div className="contact-inner-minimal">
         <h2>Let's Connect</h2>
-        <p>
-          I’m always open to learning something new and connecting with others - happy to chat. :)
+         <p> I’m always open to learning something new and connecting with others - happy to chat. :)
         </p>
 
         <div className="contact-buttons-minimal">

@@ -52,7 +52,7 @@ const Portfolio = ({ onSelect }: PortfolioProps) => {
         {categories.map((cat) => (
           <button
             key={cat}
-            className={`btn btn-outline ${
+            className={`btn ${
               activeFilter === cat ? "active" : ""
             }`}
             onClick={() => handleFilter(cat)}
