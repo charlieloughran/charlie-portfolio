@@ -34,7 +34,7 @@ const Hero = () => {
           </a>
 
           <a href="https://linkedin.com/in/charlie-loughran" target="_blank">
-            <Button type="button" variant="outline">
+            <Button type="button" variant="secondary">
               Connect with me
             </Button>
           </a>

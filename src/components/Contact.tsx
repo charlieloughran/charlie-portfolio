@@ -23,7 +23,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button type="button" variant="outline">
+            <Button type="button" variant="secondary">
               Connect with me
             </Button>
           </a>
