@@ -4,14 +4,14 @@ export const projects: Project[] = [
 {
     id: 1,
     slug: "scriptmate",
-    category: "Mobile",
+    category: "UX/UI",
     featured: false,
     hero: {
       title: "ScriptMate",
       image: "/images/ScriptMate.png",
     },
     sidebar: {
-      role: "UX/UI Designer",
+      role: "UX/UI Designer - 3rd Year Student",
       timeline: "",
       metrics: [
         "Format: Mobile Prototype",
@@ -267,6 +267,57 @@ content: {
       metrics: [
         "Type: Website Relaunch",
         "Live Site: locrn.co.uk",
+        "Deliverables: Fully built and deployed website",
+        "Tools: Figma, React, Vite, TypeScript, OpenAI",
+      ],
+    },
+    content: {
+      problem:
+        "LOCRN had no digital presence — as a freelance creative services business, that meant no way for potential clients to find or evaluate the work. Between other commitments, building a site had never made it to the top of the list. That needed to change.",
+      overview:
+        "The first website for LOCRN — a creative services business offering design on a flexible basis. Built as a deliberate MVP to establish a digital presence quickly, the site was designed and developed entirely self-directed, from initial Figma concepts through to a live React and TypeScript front-end. The intention from the start was to get something quality online, then use real user data to inform where the design goes next.",
+      approach:
+        "With no previous site and no existing data to work from, the design process was led by instinct, experience, and hypothesis. I began in Figma, exploring the layout and pushing its design-to-code capabilities — before quickly running into the realities of responsiveness, which Figma alone couldn't solve. That led me to learn React and TypeScript properly, building the site as a component-led architecture with a headless CMS integration in mind from the outset. AI tools were used to accelerate the more repetitive, generic parts of the build, keeping focus on the design and structural decisions that actually required judgment. Getting the site live demanded patience — knowing when to stop refining and ship was as much a part of the process as the design itself.",
+      decisions: [
+        {
+          question: "Why build in React and TypeScript rather than using a website builder?",
+          answer:
+            "A website builder would have been faster, but it would have imposed constraints on the design and made a future CMS integration messier. Building in React and TypeScript kept the architecture clean and extensible — and was also a deliberate opportunity to develop skills that directly inform the way I design for other clients.",
+        },
+        {
+          question: "Why launch as an MVP rather than waiting for the finished vision?",
+          answer:
+            "Perfectionism had already delayed the site for too long. An imperfect site live is more valuable than a perfect site that doesn't exist — it establishes a presence, starts collecting data, and gives something real to iterate on. The MVP framing made it possible to ship.",
+        },
+      ],
+      outcome:
+        "A live company website giving LOCRN a digital presence for the first time. The site is now a working playground for testing design theories — with analytical tools to be integrated so that real user behaviour can inform future improvements to layout, content, and conversion.",
+      nextSteps: [
+        "Integrate analytics to understand how users move through the site",
+        "Connect a headless CMS — likely WordPress or Sanity — for maintainable content",
+        "Use traffic and engagement data to validate or challenge design decisions",
+        "Iterate on layout and messaging based on what the data shows",
+      ],
+      images: [
+
+      ],
+    },
+  },
+
+    {
+    id: 7,
+    slug: "empty",
+    category: "Brand",
+    featured: true,
+    hero: {
+      title: "Five-C Network",
+      image: "/images/Five-C.png",
+    },
+    sidebar: {
+      role: "Marketing Officer",
+      timeline: "January 2025 - December 2025",
+      metrics: [
+        "Type: Social Media Assets",
         "Deliverables: Fully built and deployed website",
         "Tools: Figma, React, Vite, TypeScript, OpenAI",
       ],

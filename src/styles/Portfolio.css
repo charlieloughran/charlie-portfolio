@@ -34,10 +34,6 @@
   margin-bottom: 2.5rem;
 }
 
-.active {
-  background-color: #00bcbc;
-  color: var(--text-main)
-}
 /* =========================
    GRID
 ========================= */
