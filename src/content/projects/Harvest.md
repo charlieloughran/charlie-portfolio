@@ -7,7 +7,7 @@ category: Web & UX/UI
 featured: true
 year: 2026
 client: Harvest Communications Ltd
-coverImage: /images/HarvestHomepage.png
+coverImage: /images/harvest-website.png
 accent: "#000000"
 tags:
   - Web
