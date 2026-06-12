@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProjectDetail from "../../components/ProjectDetail.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const hasContent = Boolean(project.body && project.body.trim().length > 0);
+
+const description =
+  data.subtitle && data.client
+    ? `${data.subtitle} for ${data.client} — a case study by Charlie Loughran.`
+    : data.description ?? `${data.title} — a case study by Charlie Loughran, UX/UI designer.`;
+---
+
+<Layout
+  title={`${data.title} — Charlie Loughran`}
+  description={description}
+  ogImage={data.coverImage ?? "/og-image.png"}
+>
+  <ProjectDetail project={project} hasContent={hasContent}>
+    <Content />
+  </ProjectDetail>
+</Layout>

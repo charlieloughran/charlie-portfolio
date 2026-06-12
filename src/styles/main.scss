@@ -1,0 +1,23 @@
+// =============================================================
+// Main stylesheet
+// Imports all global partials in cascade order. Component-level
+// styles live in scoped <style lang="scss"> blocks within their
+// respective .astro components and import _variables.scss only
+// where they need token access.
+// =============================================================
+
+@use "variables" as *;
+@use "reset";
+@use "global";
+@use "typography";
+@use "animations";
+@use "buttons";
+@use "navbar";
+@use "hero";
+@use "portfolio";
+@use "about";
+@use "project-detail";
+@use "contact";
+@use "back-to-top";
+@use "error";
+@use "print";

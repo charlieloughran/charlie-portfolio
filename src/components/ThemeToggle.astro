@@ -1,0 +1,96 @@
+---
+// =============================================================
+// ThemeToggle
+// Accessible button (keyboard operable, unlike the original div)
+// that flips data-theme on <html> and persists the choice.
+// Renders a sun/moon icon depending on the active theme.
+// =============================================================
+---
+
+<button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle colour theme">
+  <svg
+    class="theme-toggle__icon theme-toggle__icon--sun"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+    ></path>
+  </svg>
+  <svg
+    class="theme-toggle__icon theme-toggle__icon--moon"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $radius-circle;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    color: var(--color-text-primary);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: border-color $transition-fast, color $transition-fast;
+    }
+
+    &:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+
+  .theme-toggle__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .theme-toggle__icon--moon {
+    display: none;
+  }
+
+  :global(html[data-theme="light"] .theme-toggle__icon--sun) {
+    display: none;
+  }
+
+  :global(html[data-theme="light"] .theme-toggle__icon--moon) {
+    display: block;
+  }
+</style>
+
+<script>
+  const toggles = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const root = document.documentElement;
+      const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        // localStorage unavailable (privacy mode) — theme just won't persist
+      }
+    });
+  });
+</script>

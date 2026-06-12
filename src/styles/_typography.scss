@@ -1,0 +1,52 @@
+@use "variables" as *;
+
+// =============================================================
+// Typography
+// Base heading and text styles. Headings default to the
+// primary (Nunito) typeface; components override font-size
+// and letter-spacing for display treatments where needed.
+// =============================================================
+
+body {
+  font-size: $font-size-lg;
+  line-height: $line-height-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-primary;
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.03em;
+  line-height: $line-height-tight;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: $font-weight-semibold;
+  letter-spacing: -0.02em;
+  line-height: $line-height-tight;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+}
+
+p,
+li {
+  line-height: $line-height-relaxed;
+}
+
+em {
+  font-style: italic;
+}

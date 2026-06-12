@@ -1,0 +1,81 @@
+@use "variables" as *;
+
+// =============================================================
+// Print styles
+// Strips chrome (navbar, theme toggle, decorative animation
+// elements, buttons, back-to-top) and produces a plain
+// black-on-white readable document with sensible page breaks.
+// =============================================================
+
+@media print {
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .navbar,
+  .navbar__theme-toggle--mobile,
+  .navbar__theme-toggle--desktop,
+  .navbar__hamburger,
+  .back-to-top,
+  .hero__noise,
+  .hero__glow,
+  .hero__scroll,
+  .skip-link,
+  .btn,
+  .pd__back,
+  .contact__link-card--cv {
+    display: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  .pd__cover-image,
+  .pd__gallery-image,
+  .portfolio__image {
+    filter: grayscale(1);
+  }
+
+  .pd__content,
+  .pd__sidebar,
+  .pd__hero {
+    color: #000 !important;
+    background: #fff !important;
+    border-color: #ccc !important;
+  }
+
+  .pd__title,
+  .pd__subtitle,
+  .pd__sidebar-value,
+  .pd__metric-value,
+  h1,
+  h2,
+  h3 {
+    color: #000 !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+
+  .pd__decision,
+  .pd__gallery-item,
+  .about__timeline-item {
+    page-break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

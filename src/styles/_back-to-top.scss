@@ -1,0 +1,46 @@
+@use "variables" as *;
+
+// =============================================================
+// Back to top
+// Fixed button shown once the user scrolls past the hero.
+// =============================================================
+
+.back-to-top {
+  position: fixed;
+  right: $space-5;
+  bottom: $space-5;
+  z-index: $z-index-back-to-top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: $radius-circle;
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-bg-card);
+  color: var(--color-accent);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity $transition-base, transform $transition-base,
+      background-color $transition-fast, color $transition-fast;
+  }
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+  }
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

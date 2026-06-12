@@ -1,0 +1,225 @@
+@use "variables" as *;
+
+// =============================================================
+// Contact
+// Two-column layout: heading/intro on the left, link cards
+// (Email, LinkedIn, Portfolio, Phone) and a CV download on the
+// right. Entrance is handled by the shared [data-reveal] system.
+// =============================================================
+
+.contact {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: $space-6;
+    right: $space-6;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-border) 25%, transparent),
+      transparent
+    );
+  }
+}
+
+// -------------------------------------------------------------
+// Grid layout
+// -------------------------------------------------------------
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-10;
+  align-items: start;
+  margin-bottom: $space-9;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $space-7;
+  }
+}
+
+// -------------------------------------------------------------
+// Left column
+// -------------------------------------------------------------
+.contact__left {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.contact__eyebrow {
+  font-family: $font-family-primary;
+  font-size: $font-size-xs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: $font-weight-medium;
+}
+
+.contact__title {
+  font-family: $font-family-primary;
+  font-size: $font-size-display-md;
+  font-weight: $font-weight-extrabold;
+  text-transform: uppercase;
+  line-height: $line-height-tight;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+
+  em {
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+}
+
+.contact__intro {
+  font-family: $font-family-primary;
+  font-size: $font-size-md-alt;
+  color: var(--color-text-muted);
+  line-height: $line-height-loose;
+  max-width: 380px;
+}
+
+// -------------------------------------------------------------
+// Right column
+// -------------------------------------------------------------
+.contact__right {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact__link-card {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 1.1rem;
+  background-color: var(--color-bg-card);
+  border: 1px solid color-mix(in srgb, var(--color-border) 10%, transparent);
+  border-radius: $radius-md;
+  text-decoration: none;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: border-color $transition-fast, background-color $transition-fast,
+      transform $transition-fast;
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+    background-color: color-mix(in srgb, var(--color-accent) 5%, var(--color-bg-card));
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translateX(4px);
+    }
+
+    .contact__link-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.contact__link-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  opacity: 0.75;
+  display: flex;
+}
+
+.contact__link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact__link-label {
+  font-family: $font-family-primary;
+  font-size: $font-size-2xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.55;
+}
+
+.contact__link-value {
+  font-family: $font-family-primary;
+  font-size: $font-size-base-alt;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact__link-arrow {
+  font-size: $font-size-lg;
+  color: var(--color-accent);
+  opacity: 0;
+  transform: translateX(-4px);
+  flex-shrink: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity $transition-fast, transform $transition-fast;
+  }
+}
+
+// -------------------------------------------------------------
+// CV button
+// -------------------------------------------------------------
+.contact__cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  padding: 0.75rem 1.4rem;
+  border-radius: $radius-button;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+  background-color: transparent;
+  text-decoration: none;
+  align-self: flex-start;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background-color $transition-fast, transform $transition-fast;
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-secondary) 8%, transparent);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// -------------------------------------------------------------
+// Footer
+// -------------------------------------------------------------
+.contact__footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-2;
+  padding-top: $space-6 + $space-2;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 10%, transparent);
+}
+
+.contact__footer-text {
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  color: var(--color-text-muted);
+  opacity: 0.45;
+  letter-spacing: 0.03em;
+}

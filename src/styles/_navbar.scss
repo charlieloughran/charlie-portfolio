@@ -1,0 +1,180 @@
+@use "variables" as *;
+
+// =============================================================
+// Navbar
+// Fixed top navigation with centred pill links, theme toggle,
+// and a mobile hamburger menu that opens a full-screen overlay.
+// =============================================================
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: $space-6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  z-index: $z-index-navbar;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background-color $transition-base, box-shadow 0.9s ease;
+  }
+
+  &--scrolled {
+    box-shadow: $shadow-navbar-scrolled;
+  }
+}
+
+// -------------------------------------------------------------
+// Logo
+// -------------------------------------------------------------
+.navbar__logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar__logo-image {
+  height: 2rem;
+  width: auto;
+}
+
+// -------------------------------------------------------------
+// Links (desktop)
+// -------------------------------------------------------------
+.navbar__links {
+  display: flex;
+  gap: $space-10;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.navbar__link {
+  color: var(--color-text-muted);
+  border-radius: $radius-pill;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-extrabold;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  padding: $space-2 $space-6;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &:active {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg);
+  }
+}
+
+// -------------------------------------------------------------
+// Right-hand cluster (theme toggle + hamburger)
+// -------------------------------------------------------------
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.navbar__theme-toggle--mobile {
+  display: none;
+}
+
+// -------------------------------------------------------------
+// Hamburger
+// -------------------------------------------------------------
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.navbar__hamburger-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  border-radius: $radius-sm;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform $transition-base, opacity $transition-base;
+  }
+}
+
+.navbar__hamburger--open {
+  .navbar__hamburger-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .navbar__hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__hamburger-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+// -------------------------------------------------------------
+// Mobile
+// -------------------------------------------------------------
+@media (max-width: $breakpoint-lg) {
+  .navbar__theme-toggle--desktop {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__links {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $space-6;
+    transform: translateX(100%);
+    z-index: $z-index-overlay;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform $transition-base ease-in-out;
+    }
+  }
+
+  .navbar__links--open {
+    transform: translateX(0);
+  }
+
+  .navbar__link {
+    font-size: $font-size-3xl + 0.4rem;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    color: var(--color-text-primary);
+
+    &:hover {
+      color: var(--color-text-muted);
+    }
+
+    &:active {
+      background: none;
+      color: var(--color-text-primary);
+    }
+  }
+
+  .navbar__theme-toggle--mobile {
+    display: block;
+    margin-top: $space-6;
+  }
+}

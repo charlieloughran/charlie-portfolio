@@ -1,0 +1,86 @@
+---
+// =============================================================
+// Hero
+// Full-height intro with a cursor-reactive radial glow, oversized
+// name treatment, CTA row, and social links. Entrance animation
+// runs once on load (see _hero.scss); the glow position is
+// updated on pointer move via the inline script below.
+// =============================================================
+---
+
+<section class="hero" data-hero>
+  <div class="hero__noise" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="hero__inner container">
+    <div class="hero__eyebrow">
+      <span class="hero__tag">UX · UI · Digital · Web · Print</span>
+      <span class="hero__available">
+        <span class="hero__dot" aria-hidden="true"></span>
+        Working at Harvest Communications Ltd · Based in London, UK
+      </span>
+    </div>
+
+    <div class="hero__headline">
+      <div class="hero__name-line">
+        <span class="hero__name">Charlie</span>
+      </div>
+      <div class="hero__name-line hero__name-line--offset">
+        <span class="hero__name hero__name--accent">Loughran</span>
+      </div>
+    </div>
+
+    <p class="hero__sub">
+      I design digital products that are clear, usable, and considered — from
+      complex dashboards to brand-led web builds. Three years delivering
+      across arts, sustainability and higher education.
+    </p>
+
+    <div class="hero__actions">
+      <a href="/#work" class="btn btn--primary">
+        View work
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a href="/#contact" class="btn btn--ghost">Get in touch</a>
+      <a href="/Charlie_Loughran_UX_CV.pdf" download class="btn btn--outline">
+        Download CV
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 3v7M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero__links">
+      <a href="https://linkedin.com/in/charlieloughran" target="_blank" rel="noreferrer" class="hero__link">
+        LinkedIn ↗
+      </a>
+      <span class="hero__divider" aria-hidden="true">·</span>
+      <a href="https://charlieloughran.co.uk" target="_blank" rel="noreferrer" class="hero__link">
+        charlieloughran.co.uk ↗
+      </a>
+      <span class="hero__divider" aria-hidden="true">·</span>
+      <a href="mailto:charlie.loughran@outlook.com" class="hero__link">
+        charlie.loughran@outlook.com
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <span class="hero__scroll-label">Scroll</span>
+    <div class="hero__scroll-line" aria-hidden="true"></div>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector<HTMLElement>("[data-hero]");
+
+  hero?.addEventListener("mousemove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    hero.style.setProperty("--hero-pointer-x", `${x}%`);
+    hero.style.setProperty("--hero-pointer-y", `${y}%`);
+  });
+</script>

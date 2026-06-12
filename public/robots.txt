@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://charlieloughran.co.uk/sitemap-index.xml

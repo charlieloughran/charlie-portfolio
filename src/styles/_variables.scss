@@ -1,0 +1,185 @@
+// =============================================================
+// Design tokens
+// Single source of truth for colour, type, spacing, motion etc.
+// Never hardcode these values anywhere else in the project —
+// reference the SCSS variables (build-time) or CSS custom
+// properties (runtime / theme-aware) defined here.
+// =============================================================
+
+// -------------------------------------------------------------
+// Colour — raw palette (SCSS, used to build the CSS custom
+// properties below; also handy for one-off SCSS calculations)
+// -------------------------------------------------------------
+$color-teal-900: #002222; // dark card background
+$color-teal-800: #003333; // dark page background
+$color-teal-700: rgb(0, 88, 88); // light theme border / muted text
+$color-teal-600: rgb(0, 97, 97); // hover state
+$color-teal-500: #009999; // brand accent (both themes)
+$color-teal-200: rgb(138, 173, 173); // dark theme border
+$color-teal-100: rgb(187, 220, 220); // dark theme muted text
+$color-teal-50: rgb(212, 227, 227); // light page background
+$color-teal-25: rgb(241, 249, 249); // light card background
+
+$color-pink-400: rgb(255, 124, 181); // dark theme secondary accent
+$color-maroon-900: rgb(46, 13, 27); // light theme secondary accent
+
+$color-white: #f5f5f5;
+
+// -------------------------------------------------------------
+// Colour — runtime theme tokens (CSS custom properties)
+// Dark is the default theme; [data-theme="light"] overrides.
+// -------------------------------------------------------------
+:root {
+  // Surfaces
+  --color-bg: #{$color-teal-800};
+  --color-bg-card: #{$color-teal-900};
+
+  // Brand
+  --color-accent: #{$color-teal-500};
+  --color-accent-hover: #{$color-teal-600};
+  --color-secondary: #{$color-pink-400};
+
+  // Text
+  --color-text-primary: #{$color-white};
+  --color-text-muted: #{$color-teal-100};
+
+  // Structure
+  --color-border: #{$color-teal-200};
+
+  // Misc
+  --color-white: #{$color-white};
+  --color-card-accent: var(--color-accent);
+}
+
+:root[data-theme="light"] {
+  --color-bg: #{$color-teal-50};
+  --color-bg-card: #{$color-teal-25};
+
+  --color-accent: #{$color-teal-500};
+  --color-accent-hover: #{$color-teal-600};
+  --color-secondary: #{$color-maroon-900};
+
+  --color-text-primary: #{$color-teal-800};
+  --color-text-muted: #{$color-teal-700};
+
+  --color-border: #{$color-teal-700};
+}
+
+// -------------------------------------------------------------
+// Typography
+// -------------------------------------------------------------
+$font-family-primary: "Nunito Variable", "Nunito", sans-serif; // headings + most UI text
+$font-family-secondary: "DM Sans", sans-serif; // supporting / small text
+$font-family-accent: $font-family-primary; // alias retained for compatibility — no longer DM Serif Display
+
+// Font sizes — consolidated scale (rems)
+$font-size-2xs: 0.65rem;
+$font-size-xs: 0.7rem;
+$font-size-sm: 0.75rem;
+$font-size-sm-alt: 0.78rem;
+$font-size-base: 0.8rem;
+$font-size-base-alt: 0.85rem;
+$font-size-md: 0.875rem;
+$font-size-md-alt: 0.9rem;
+$font-size-lg: 0.95rem;
+$font-size-xl: 1rem;
+$font-size-xl-alt: 1.05rem;
+$font-size-2xl: 1.125rem;
+$font-size-3xl: 1.15rem;
+
+// Fluid / display sizes
+$font-size-display-sm: clamp(1.75rem, 3.5vw, 2.5rem); // About heading
+$font-size-display-md: clamp(2rem, 4vw, 3rem); // Portfolio / Contact heading
+$font-size-display-lg: clamp(2.5rem, 6vw, 5rem); // Project detail title
+$font-size-display-xl: clamp(4rem, 11vw, 9rem); // Hero name
+$font-size-hero-sub: clamp(1rem, 1.8vw, 1.125rem);
+$font-size-card-title: clamp(1.1rem, 2vw, 1.3rem);
+$font-size-card-title-featured: clamp(1.4rem, 3vw, 1.9rem);
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+// Line heights
+$line-height-tight: 1.1;
+$line-height-snug: 1.2;
+$line-height-base: 1.5;
+$line-height-relaxed: 1.6;
+$line-height-loose: 1.7;
+$line-height-prose: 1.8;
+
+// -------------------------------------------------------------
+// Spacing scale — base unit 4px
+// -------------------------------------------------------------
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 24px;
+$space-6: 32px;
+$space-7: 48px;
+$space-8: 64px;
+$space-9: 96px;
+$space-10: 128px;
+$space-11: 160px;
+$space-12: 192px;
+
+// -------------------------------------------------------------
+// Border radius
+// -------------------------------------------------------------
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-pill: 999px;
+$radius-circle: 50%;
+$radius-button: 20px;
+
+// -------------------------------------------------------------
+// Transitions
+// -------------------------------------------------------------
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.4s ease;
+$transition-color: background-color $transition-base, color $transition-base, border-color $transition-base;
+
+// -------------------------------------------------------------
+// Breakpoints (SCSS vars — used in @media queries)
+// -------------------------------------------------------------
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1000px;
+
+// -------------------------------------------------------------
+// Shadows
+// -------------------------------------------------------------
+$shadow-card-hover: 0 16px 40px rgba(0, 242, 255, 0.25);
+$shadow-button-hover: 0 6px 20px rgba(0, 153, 153, 0.3);
+$shadow-navbar-scrolled: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+// -------------------------------------------------------------
+// Z-index layers
+// -------------------------------------------------------------
+$z-index-base: 1;
+$z-index-overlay: 998;
+$z-index-navbar: 1000;
+$z-index-back-to-top: 1000;
+$z-index-hamburger: 1100;
+
+// -------------------------------------------------------------
+// Layout
+// -------------------------------------------------------------
+$content-max-width: 1100px;
+$content-padding-inline: $space-6 * 0.75; // 24px (1.5rem)
+
+// -------------------------------------------------------------
+// Component dimensions
+// -------------------------------------------------------------
+$portfolio-media-height: 350px;
+$pd-cover-height: clamp(280px, 45vw, 520px);
+$font-size-pd-meta: 0.82rem;

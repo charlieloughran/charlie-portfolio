@@ -1,0 +1,12 @@
+/* TEAM */
+Designer & Developer: Charlie Loughran
+Site: https://charlieloughran.co.uk
+Location: London, UK
+
+/* TECHNOLOGY */
+Built with: Astro, SCSS, TypeScript
+Tested with: Playwright
+Hosted on: Netlify
+
+/* THANKS */
+Thanks for reading the source.

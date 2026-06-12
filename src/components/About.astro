@@ -1,0 +1,130 @@
+---
+// =============================================================
+// About
+// Intro/bio header, skills summary grid, and experience timeline.
+// =============================================================
+
+const skills = [
+  {
+    category: "Design & UI",
+    items: ["Figma", "Adobe InDesign", "Illustrator", "Photoshop", "Layout Design", "Typography", "Brand Identity"],
+  },
+  {
+    category: "UX",
+    items: ["User-Centred Design", "Wireframing", "Prototyping", "UX Auditing", "Information Architecture", "Interaction Design", "Accessible Design"],
+  },
+  {
+    category: "Web & CMS",
+    items: ["React", "TypeScript", "Vite", "WordPress", "Umbraco", "Website Architecture"],
+  },
+  {
+    category: "Marketing",
+    items: ["Digital Marketing", "LinkedIn B2B", "Google Ads", "Analytics", "Content Strategy"],
+  },
+];
+
+const timeline = [
+  {
+    date: "Mar 2026 – Present",
+    role: "UI Designer (Contract)",
+    company: "University of Salford · Reconmatic",
+    detail: "Dashboard UI for a UK decarbonisation tool. UX audit, hi-fi wireframes, full colour system.",
+  },
+  {
+    date: "Jan 2026 – Present",
+    role: "Creative Designer & Marketing Lead",
+    company: "Harvest Communications",
+    detail: "Built the company website in React/TypeScript. Theatre programmes for West End & touring productions.",
+  },
+  {
+    date: "Oct 2024 – Present",
+    role: "Director / Freelance Designer",
+    company: "LOCRN Ltd",
+    detail: "Independent practice delivering print, brand, and digital across theatre, arts, and education.",
+  },
+  {
+    date: "Jan 2025 – Dec 2025",
+    role: "Marketing Officer",
+    company: "University of Salford · CSI",
+    detail: "Redesigned the Centre's WordPress site. Developed the Five-C Network and Sustainable Futures identity.",
+  },
+  {
+    date: "Jun 2023 – Oct 2024",
+    role: "Graphic & Digital Designer",
+    company: "HTDL",
+    detail: "Sixways Stadium website. ATG rebrand across 100+ productions. Led design system improvements.",
+  },
+];
+---
+
+<section class="about section-padding" id="about" data-reveal-section>
+  <div class="container">
+    <div class="about__header" data-reveal>
+      <span class="about__eyebrow">About</span>
+      <div class="about__intro">
+        <h2 class="about__title">
+          Design that works<br />
+          <em>for the people using it</em>
+        </h2>
+        <p class="about__bio">
+          I'm a UX/UI designer with a background spanning digital product
+          design, web, brand, and print. I've delivered for recognisable
+          clients across sports, arts, and higher education — designing
+          dashboards, building websites from scratch, and producing
+          brand-consistent work across high-volume, deadline-driven
+          environments.
+        </p>
+        <p class="about__bio">
+          I bring the same rigour to a user flow as I do to a page layout.
+          Currently seeking a UX/UI Designer role in London where design can
+          have a tangible impact.
+        </p>
+        <div class="about__education">
+          <span class="about__edu-badge">
+            BA (Hons) Digital Media &amp; XR
+            <span class="about__edu-separator" aria-hidden="true">·</span>
+            University of Salford
+            <span class="about__edu-separator" aria-hidden="true">·</span>
+            First Class Honours
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__skills" data-reveal data-reveal-delay="1">
+      {
+        skills.map((group) => (
+          <div class="about__skill-group">
+            <h4 class="about__skill-title">{group.category}</h4>
+            <div class="about__skill-list">
+              {group.items.map((item) => (
+                <span class="about__skill-item">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="about__timeline-wrap" data-reveal data-reveal-delay="2">
+      <h3 class="about__timeline-title">Experience</h3>
+      <ol class="about__timeline">
+        {
+          timeline.map((entry) => (
+            <li class="about__timeline-item">
+              <div class="about__timeline-dot" aria-hidden="true" />
+              <div class="about__timeline-content">
+                <div class="about__timeline-meta">
+                  <span class="about__timeline-date">{entry.date}</span>
+                  <span class="about__timeline-company">{entry.company}</span>
+                </div>
+                <div class="about__timeline-role">{entry.role}</div>
+                <p class="about__timeline-detail">{entry.detail}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

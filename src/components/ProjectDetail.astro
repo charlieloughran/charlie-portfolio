@@ -1,0 +1,163 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  hasContent: boolean;
+}
+
+const { project, hasContent } = Astro.props;
+const { data } = project;
+
+const hasStructured = Boolean(
+  data.problem || data.overview || data.approach || data.outcome
+);
+---
+
+<div class="pd" style={`--pd-accent: ${data.accent};`}>
+  <header class:list={["pd__hero", { "pd__hero--no-cover": !data.coverImage }]} data-reveal>
+    {data.coverImage && (
+      <div class="pd__cover">
+        <img src={data.coverImage} alt={data.title} class="pd__cover-image" />
+      </div>
+    )}
+    <div class="pd__nav">
+      <a href="/#work" class="pd__back">
+        <span class="pd__back-arrow">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        Back to work
+      </a>
+    </div>
+  </header>
+
+  <div class="pd__hero-content">
+    <div class="pd__meta">
+      {data.category && <span class="pd__tag">{data.category}</span>}
+      {data.year && <span class="pd__year">{data.year}</span>}
+    </div>
+    <h1 class="pd__title">{data.title}</h1>
+    {data.subtitle && <p class="pd__subtitle">{data.subtitle}</p>}
+  </div>
+
+  <div class="pd__body">
+    <aside class="pd__sidebar" data-reveal>
+      <div class="pd__sidebar-card">
+        {data.client && (
+          <div class="pd__sidebar-row">
+            <span class="pd__sidebar-label">Client</span>
+            <span class="pd__sidebar-value">{data.client}</span>
+          </div>
+        )}
+        {data.role && (
+          <div class="pd__sidebar-row">
+            <span class="pd__sidebar-label">Role</span>
+            <span class="pd__sidebar-value">{data.role}</span>
+          </div>
+        )}
+        {data.timeline && (
+          <div class="pd__sidebar-row">
+            <span class="pd__sidebar-label">Timeline</span>
+            <span class="pd__sidebar-value">{data.timeline}</span>
+          </div>
+        )}
+        {data.metrics.length > 0 && (
+          <div class="pd__sidebar-row pd__sidebar-row--stack">
+            <span class="pd__sidebar-label">Details</span>
+            <ul class="pd__sidebar-metrics">
+              {data.metrics.map((m) => <li>{m}</li>)}
+            </ul>
+          </div>
+        )}
+        {data.tags.length > 0 && (
+          <div class="pd__sidebar-row pd__sidebar-row--stack">
+            <span class="pd__sidebar-label">Tags</span>
+            <div class="pd__sidebar-tags">
+              {data.tags.map((tag) => <span class="pd__sidebar-tag">{tag}</span>)}
+            </div>
+          </div>
+        )}
+      </div>
+    </aside>
+
+    <main class="pd__main">
+      {hasContent ? (
+        <div class="pd__markdown" data-reveal>
+          <slot />
+        </div>
+      ) : hasStructured ? (
+        <>
+          {data.problem && (
+            <section class="pd__section" data-reveal>
+              <h2 class="pd__section-heading">Problem</h2>
+              <p class="pd__prose">{data.problem}</p>
+            </section>
+          )}
+          {data.overview && (
+            <section class="pd__section" data-reveal>
+              <h2 class="pd__section-heading">Overview</h2>
+              <p class="pd__prose">{data.overview}</p>
+            </section>
+          )}
+          {data.approach && (
+            <section class="pd__section" data-reveal>
+              <h2 class="pd__section-heading">Approach</h2>
+              <p class="pd__prose">{data.approach}</p>
+            </section>
+          )}
+          {data.decisions.length > 0 && (
+            <section class="pd__section" data-reveal>
+              <h2 class="pd__section-heading">Design Decisions</h2>
+              <div class="pd__decisions">
+                {data.decisions.map((d) => (
+                  <div class="pd__decision">
+                    <h3 class="pd__decision-q">{d.question}</h3>
+                    <p class="pd__decision-a">{d.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+          {data.outcome && (
+            <section class="pd__section" data-reveal>
+              <h2 class="pd__section-heading">Outcome</h2>
+              <p class="pd__prose">{data.outcome}</p>
+            </section>
+          )}
+          {data.nextSteps.length > 0 && (
+            <section class="pd__section" data-reveal>
+              <h2 class="pd__section-heading">Next Steps</h2>
+              <ul class="pd__list">
+                {data.nextSteps.map((step) => <li>{step}</li>)}
+              </ul>
+            </section>
+          )}
+        </>
+      ) : null}
+
+      {data.images.length > 0 && (
+        <section class="pd__section" data-reveal>
+          <h2 class="pd__section-heading">Gallery</h2>
+          <div class="pd__gallery">
+            {data.images.map((src, i) => (
+              <img src={src} alt={`${data.title} — screenshot ${i + 1}`} class="pd__gallery-img" />
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  </div>
+
+  <div class="pd__footer">
+    <a href="/#work" class="pd__back">
+      <span class="pd__back-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      Back to all work
+    </a>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+@use "variables" as *;
+
+// =============================================================
+// Hero
+// Full-height introduction section with cursor-reactive glow,
+// noise texture, oversized name treatment, and entrance
+// animations that run once on page load.
+// =============================================================
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(#{$space-7} + 0.5rem) 0 calc(#{$space-7} - 0.5rem);
+  --hero-pointer-x: 50%;
+  --hero-pointer-y: 50%;
+}
+
+// Noise grain overlay
+.hero__noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: $z-index-base;
+}
+
+// Cursor-following radial glow
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--hero-pointer-x) var(--hero-pointer-y),
+    color-mix(in srgb, var(--color-accent) 12%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: $z-index-base;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background 0.1s ease;
+  }
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+// -------------------------------------------------------------
+// Eyebrow row
+// -------------------------------------------------------------
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-3;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.6s ease both;
+    animation-delay: 0.1s;
+  }
+}
+
+.hero__tag {
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.9rem;
+  opacity: 0.7;
+}
+
+.hero__available {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-family-secondary;
+  font-size: $font-size-base;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.hero__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: $radius-circle;
+  background-color: rgb(222, 175, 74);
+  box-shadow: 0 0 0 2px rgba(222, 190, 74, 0.25);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+}
+
+// -------------------------------------------------------------
+// Headline
+// -------------------------------------------------------------
+.hero__headline {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__name-line {
+  display: flex;
+  align-items: baseline;
+  gap: $space-4;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.7s ease both;
+    animation-delay: 0.25s;
+  }
+}
+
+.hero__name-line--offset {
+  padding-left: clamp(1rem, 5vw, 4rem);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation-delay: 0.38s;
+  }
+}
+
+.hero__name {
+  font-family: $font-family-primary;
+  font-size: $font-size-display-xl;
+  text-transform: uppercase;
+  font-weight: $font-weight-black;
+  line-height: 0.9;
+  color: var(--color-text-primary);
+}
+
+.hero__name--accent {
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+// -------------------------------------------------------------
+// Sub-copy
+// -------------------------------------------------------------
+.hero__sub {
+  font-family: $font-family-primary;
+  font-size: $font-size-hero-sub;
+  font-weight: $font-weight-light;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  line-height: 1.65;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.7s ease both;
+    animation-delay: 0.5s;
+  }
+}
+
+// -------------------------------------------------------------
+// Actions
+// -------------------------------------------------------------
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-wrap: wrap;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.7s ease both;
+    animation-delay: 0.63s;
+  }
+}
+
+// -------------------------------------------------------------
+// Social / contact links
+// -------------------------------------------------------------
+.hero__links {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-wrap: wrap;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.7s ease both;
+    animation-delay: 0.75s;
+  }
+}
+
+.hero__link {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.hero__divider {
+  color: var(--color-border);
+  opacity: 0.5;
+}
+
+// -------------------------------------------------------------
+// Scroll hint
+// -------------------------------------------------------------
+.hero__scroll {
+  position: absolute;
+  bottom: $space-5;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  z-index: 2;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 1s ease both;
+    animation-delay: 1s;
+  }
+}
+
+.hero__scroll-label {
+  font-family: $font-family-secondary;
+  font-size: $font-size-2xs;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-border);
+  opacity: 0.5;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-border), transparent);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: scroll-line 1.5s ease-in-out infinite;
+  }
+}
+
+// -------------------------------------------------------------
+// Responsive
+// -------------------------------------------------------------
+@media (max-width: $breakpoint-sm) {
+  .hero__name-line--offset {
+    padding-left: $space-2;
+  }
+}

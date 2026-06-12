@@ -1,0 +1,113 @@
+---
+// =============================================================
+// Navbar
+// Fixed header with centred pill nav links, theme toggle, and a
+// mobile hamburger that opens a full-screen link overlay. Also
+// applies a `--scrolled` style once the page has been scrolled.
+// =============================================================
+import { Image } from "astro:assets";
+import ThemeToggle from "./ThemeToggle.astro";
+import logoLight from "../assets/cl-light.png";
+import logoDark from "../assets/cl-dark.png";
+---
+
+<header class="navbar" data-navbar>
+  <a href="/" class="navbar__logo-link" aria-label="Charlie Loughran — home">
+    <Image
+      src={logoLight}
+      alt=""
+      class="navbar__logo-image navbar__logo-image--light"
+      width={126}
+      height={32}
+    />
+    <Image
+      src={logoDark}
+      alt=""
+      class="navbar__logo-image navbar__logo-image--dark"
+      width={126}
+      height={32}
+    />
+  </a>
+
+  <nav id="navbar-links" class="navbar__links" data-navbar-links aria-label="Primary">
+    <a href="/#work" class="navbar__link" data-navbar-link>Portfolio</a>
+    <a href="/#about" class="navbar__link" data-navbar-link>About</a>
+    <a href="/#contact" class="navbar__link" data-navbar-link>Connect</a>
+
+    <div class="navbar__theme-toggle--mobile">
+      <ThemeToggle />
+    </div>
+  </nav>
+
+  <div class="navbar__right">
+    <div class="navbar__theme-toggle--desktop">
+      <ThemeToggle />
+    </div>
+
+    <button
+      type="button"
+      class="navbar__hamburger"
+      data-hamburger
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="navbar-links"
+    >
+      <span class="navbar__hamburger-bar"></span>
+      <span class="navbar__hamburger-bar"></span>
+      <span class="navbar__hamburger-bar"></span>
+    </button>
+  </div>
+</header>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  // Show the light-coloured logo on dark backgrounds and the
+  // dark-coloured logo on light backgrounds.
+  .navbar__logo-image--dark {
+    display: none;
+  }
+
+  :global(html[data-theme="light"] .navbar__logo-image--light) {
+    display: none;
+  }
+
+  :global(html[data-theme="light"] .navbar__logo-image--dark) {
+    display: block;
+  }
+</style>
+
+<script>
+  const navbar = document.querySelector<HTMLElement>("[data-navbar]");
+  const hamburger = document.querySelector<HTMLButtonElement>("[data-hamburger]");
+  const links = document.querySelector<HTMLElement>("[data-navbar-links]");
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-navbar-link]");
+
+  function closeMenu() {
+    hamburger?.classList.remove("navbar__hamburger--open");
+    links?.classList.remove("navbar__links--open");
+    hamburger?.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleMenu() {
+    const isOpen = links?.classList.toggle("navbar__links--open");
+    hamburger?.classList.toggle("navbar__hamburger--open", isOpen);
+    hamburger?.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  }
+
+  hamburger?.addEventListener("click", toggleMenu);
+  navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1000) closeMenu();
+  });
+
+  // Toggle a "scrolled" treatment once the page has moved away from
+  // the very top (previously dead CSS in the original site).
+  const updateScrolled = () => {
+    navbar?.classList.toggle("navbar--scrolled", window.scrollY > 10);
+  };
+
+  updateScrolled();
+  window.addEventListener("scroll", updateScrolled, { passive: true });
+</script>

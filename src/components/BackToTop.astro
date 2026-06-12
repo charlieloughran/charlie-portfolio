@@ -1,0 +1,44 @@
+---
+// =============================================================
+// BackToTop
+// Fixed circular button that fades in once the user scrolls past
+// the hero and scrolls smoothly back to the top when pressed.
+// =============================================================
+---
+
+<button
+  type="button"
+  class="back-to-top"
+  data-back-to-top
+  aria-label="Scroll back to top"
+>
+  <svg
+    class="back-to-top__icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>("[data-back-to-top]");
+
+  const updateVisibility = () => {
+    button?.classList.toggle("back-to-top--visible", window.scrollY > 300);
+  };
+
+  updateVisibility();
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+
+  button?.addEventListener("click", () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+</script>

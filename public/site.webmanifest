@@ -1,0 +1,12 @@
+{
+  "name": "Charlie Loughran — UX/UI Designer",
+  "short_name": "Charlie Loughran",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ],
+  "theme_color": "#003333",
+  "background_color": "#003333",
+  "display": "standalone",
+  "start_url": "/"
+}

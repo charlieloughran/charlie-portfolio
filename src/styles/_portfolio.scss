@@ -1,0 +1,324 @@
+@use "variables" as *;
+
+// =============================================================
+// Portfolio
+// Case-study grid. The first (featured) project spans the full
+// width of the grid; subsequent projects sit two-up on desktop.
+// =============================================================
+
+.portfolio {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: $space-6;
+    right: $space-6;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-border) 25%, transparent),
+      transparent
+    );
+  }
+}
+
+// -------------------------------------------------------------
+// Header
+// -------------------------------------------------------------
+.portfolio__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: $space-4 $space-8;
+  margin-bottom: $space-9;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portfolio__eyebrow {
+  font-family: $font-family-primary;
+  font-size: $font-size-2xs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding-top: 0.6rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.portfolio__title {
+  font-family: $font-family-primary;
+  font-size: $font-size-display-sm;
+  font-weight: $font-weight-extrabold;
+  text-transform: uppercase;
+  line-height: $line-height-tight;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  grid-column: 2;
+  grid-row: 1 / 3;
+
+  em {
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+.portfolio__description {
+  font-family: $font-family-secondary;
+  font-size: $font-size-base;
+  color: var(--color-text-muted);
+  max-width: 280px;
+  line-height: $line-height-relaxed;
+  grid-column: 3;
+  grid-row: 1 / 3;
+  text-align: right;
+
+  @media (max-width: $breakpoint-md) {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+    max-width: 100%;
+  }
+}
+
+// -------------------------------------------------------------
+// Grid
+// -------------------------------------------------------------
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-5;
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portfolio__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-card);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  text-decoration: none;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform $transition-base, box-shadow $transition-base;
+  }
+
+  &:hover {
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translateY(-4px);
+      box-shadow: $shadow-card-hover;
+    }
+
+    .portfolio__arrow {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .portfolio__image {
+      @media (prefers-reduced-motion: no-preference) {
+        transform: scale(1.04);
+      }
+    }
+
+    .portfolio__placeholder-shape {
+      @media (prefers-reduced-motion: no-preference) {
+        transform: scale(0.85);
+      }
+    }
+  }
+}
+
+.portfolio__card--featured {
+  grid-column: 1 / -1;
+
+  .portfolio__card-title {
+    font-size: $font-size-card-title-featured;
+  }
+}
+
+// -------------------------------------------------------------
+// Media
+// -------------------------------------------------------------
+.portfolio__media {
+  position: relative;
+  width: 100%;
+  height: $portfolio-media-height;
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+.portfolio__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform $transition-slow;
+  }
+}
+
+.portfolio__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.portfolio__placeholder-text {
+  position: relative;
+  z-index: 1;
+  font-family: $font-family-secondary;
+  font-size: $font-size-2xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-border);
+  opacity: 0.4;
+}
+
+.portfolio__placeholder-shape {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  border-radius: $radius-circle;
+  background-color: var(--color-border);
+  opacity: 0.06;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform $transition-slow;
+  }
+}
+
+// -------------------------------------------------------------
+// Body / meta
+// -------------------------------------------------------------
+.portfolio__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  padding: $space-5 $space-5 $space-5;
+}
+
+.portfolio__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.portfolio__year {
+  font-family: $font-family-secondary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-regular;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+.portfolio__client {
+  font-family: $font-family-secondary;
+  font-size: $font-size-2xs;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.portfolio__card-title {
+  font-family: $font-family-primary;
+  font-size: $font-size-card-title;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.portfolio__subtitle {
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  font-weight: $font-weight-medium;
+}
+
+.portfolio__description-text {
+  font-family: $font-family-secondary;
+  font-size: $font-size-base;
+  color: var(--color-text-muted);
+  line-height: $line-height-relaxed;
+  margin-top: 0.2rem;
+}
+
+// -------------------------------------------------------------
+// Tags
+// -------------------------------------------------------------
+.portfolio__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin-top: $space-2;
+}
+
+.portfolio__tag {
+  font-family: $font-family-secondary;
+  font-size: $font-size-2xs;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid color-mix(in srgb, var(--color-border) 20%, transparent);
+  border-radius: $radius-sm;
+  padding: 0.2rem 0.5rem;
+  opacity: 0.6;
+}
+
+// -------------------------------------------------------------
+// Arrow
+// -------------------------------------------------------------
+.portfolio__arrow {
+  position: absolute;
+  top: $space-4;
+  right: $space-4;
+  color: var(--color-card-accent, var(--color-accent));
+  opacity: 0;
+  transform: translate(-4px, 4px);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity $transition-fast, transform $transition-fast;
+  }
+}
+
+// -------------------------------------------------------------
+// Footer CTA
+// -------------------------------------------------------------
+.portfolio__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-5;
+  flex-wrap: wrap;
+  margin-top: $space-8;
+  padding-top: $space-5;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 12%, transparent);
+}
+
+.portfolio__footer-text {
+  font-family: $font-family-secondary;
+  font-size: $font-size-base;
+  color: var(--color-text-muted);
+  max-width: 400px;
+  line-height: $line-height-relaxed;
+}
