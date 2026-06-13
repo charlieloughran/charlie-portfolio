@@ -1,0 +1,217 @@
+---
+// =============================================================
+// Other Work
+// Lightweight gallery of additional pieces that don't warrant a
+// full case study but show range — 3D, motion, and brand work.
+// =============================================================
+import Layout from "../layouts/Layout.astro";
+import Contact from "../components/Contact.astro";
+
+const items = [
+  {
+    title: "Jack Grealish — Title Sequence",
+    image: "/images/other-jack-grealish.png",
+    caption:
+      "A football fan-art concept exploring title screens, kit graphics, and club badge artwork built around Jack Grealish's move to Manchester City.",
+  },
+  {
+    title: "Hope Mill Theatre — 3D Renders",
+    image: "/images/other-hope-mill.png",
+    caption:
+      "3D renders of Hope Mill Theatre's auditorium, modelled in Blender from a floor plan and reference photos — exploring lighting, materials, and staging.",
+  },
+  {
+    title: "Modern Bedroom — 3D & VR",
+    image: "/images/other-modern-bedroom-vr.png",
+    caption:
+      "A modern bedroom interior modelled and rendered for a VR walkthrough, then rebuilt as an interactive 3D environment with coded lighting and real-time rendering.",
+  },
+  {
+    title: "CSI — Brand & Campaign Graphics",
+    image: "/images/other-csi-brand-set.png",
+    caption:
+      "A set of campaign carousels, sub-brand identities, and programme graphics produced for the Centre for Sustainable Innovation — Innovation Labs, the Five-C Network, and seasonal and affiliate content.",
+  },
+];
+---
+
+<Layout
+  title="Other Work — Charlie Loughran"
+  description="Additional pieces from Charlie Loughran's portfolio — 3D, motion, and brand work that didn't make the cut for a full case study."
+>
+  <section class="other-work section-padding" id="other-work" data-reveal-section>
+    <div class="container">
+      <a href="/" class="other-work__breadcrumb">&larr; Full portfolio</a>
+
+      <div class="other-work__header" data-reveal>
+        <div class="other-work__eyebrow">Other Work</div>
+        <h1 class="other-work__title">
+          Extra pieces &<br /><em>side projects</em>
+        </h1>
+        <p class="other-work__description">
+          A few additional pieces that show some range — 3D, motion, and
+          brand work that didn't need a full case study, but were too fun
+          to leave out.
+        </p>
+      </div>
+
+      <div class="other-work__grid">
+        {
+          items.map((item, index) => (
+            <div
+              class="other-work__card"
+              data-reveal
+              data-reveal-delay={Math.min(index + 1, 5)}
+            >
+              <div class="other-work__media">
+                <img
+                  class="other-work__image"
+                  src={item.image}
+                  alt={item.title}
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="other-work__body">
+                <h2 class="other-work__card-title">{item.title}</h2>
+                <p class="other-work__caption">{item.caption}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</Layout>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .other-work {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: $space-6;
+      right: $space-6;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        color-mix(in srgb, var(--color-border) 25%, transparent),
+        transparent
+      );
+    }
+  }
+
+  .other-work__breadcrumb {
+    display: inline-block;
+    font-family: $font-family-secondary;
+    font-size: $font-size-sm;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    margin-bottom: $space-6;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  .other-work__header {
+    max-width: 640px;
+    margin-bottom: $space-9;
+  }
+
+  .other-work__eyebrow {
+    font-family: $font-family-primary;
+    font-size: $font-size-2xs;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: $space-4;
+  }
+
+  .other-work__title {
+    font-family: $font-family-primary;
+    font-size: $font-size-display-sm;
+    font-weight: $font-weight-extrabold;
+    text-transform: uppercase;
+    line-height: $line-height-tight;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+    margin-bottom: $space-4;
+
+    em {
+      font-style: italic;
+      color: var(--color-secondary);
+    }
+  }
+
+  .other-work__description {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    color: var(--color-text-muted);
+    line-height: $line-height-relaxed;
+  }
+
+  .other-work__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-5;
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .other-work__card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-card);
+    border-radius: $radius-lg;
+    overflow: hidden;
+  }
+
+  .other-work__media {
+    position: relative;
+    width: 100%;
+    height: $portfolio-media-height;
+    overflow: hidden;
+    background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+
+  .other-work__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .other-work__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: $space-5;
+  }
+
+  .other-work__card-title {
+    font-family: $font-family-primary;
+    font-size: $font-size-card-title;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .other-work__caption {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    color: var(--color-text-muted);
+    line-height: $line-height-relaxed;
+  }
+</style>
