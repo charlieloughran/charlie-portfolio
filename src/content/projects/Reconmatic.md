@@ -19,7 +19,8 @@ focusAreas:
   ux-design: 1
   digital-design: 2
   web-ui-design: 2
-  brand-print: 3
+  brand: 4
+  print: 4
 role: UI Designer (Contract)
 timeline: 6 weeks
 metrics: []
@@ -45,7 +46,7 @@ From there, I made three structural decisions:
 
 - **Navigation restructured** — A persistent sidebar with six clear sections — Dashboard, Projects, Products, Materials, Users, Settings — giving users a consistent mental model of the system at all times.
 - **Cards replace trees** — Project data moved from collapsible text rows into scannable cards with colour-coded status borders. Active, archived, and pending projects are distinguishable at a glance.
-- **Brand identity established** — Reconmatic's green adopted as the primary action colour throughout. Clean typographic hierarchy and consistent spacing transform a prototype into a product that earns trust.
+- **Consistent visual system** — A clear colour, type, and spacing system applied throughout the dashboard, so status, hierarchy, and actions read consistently across every screen — turning a prototype into a product that earns trust.
 
 ![Redesigned dashboard — card layout, filter tabs, status indicators, and consistent navigation.](/images/dims-dashboard.png)
 
