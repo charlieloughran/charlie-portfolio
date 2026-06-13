@@ -15,8 +15,9 @@
 .pd__top {
   max-width: $content-max-width;
   margin: 0 auto;
-  // Clears the fixed navbar (logo height + vertical padding = $space-9).
-  padding: $space-9 $content-padding-inline 0;
+  // Clears the fixed navbar (logo height + vertical padding = $space-9),
+  // plus extra breathing room before the back link.
+  padding: calc($space-9 + $space-6) $content-padding-inline 0;
 }
 
 .pd__back {
