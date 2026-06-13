@@ -17,65 +17,48 @@ tags:
   - React
   - TypeScript
 focusAreas:
-  ux-design: 3
+  ux-design: 2
   digital-design: 1
   web-ui-design: 1
-  brand-print: 1
-role: Creative Designer & Marketing Lead
+  brand: 4
+  print: 4
+role: UX/UI Designer
 tools: Figma, React, TypeScript, Vite
 status: Live — ongoing
 timeline: Ongoing
 metrics: []
 ---
 
-## Building a company's digital identity from nothing.
+## Building a company's digital presence from nothing.
 
-Harvest Communications produces theatre programmes for West End and touring productions — but had no website to show for it. I joined as Creative Designer and built their digital presence from the ground up: brand direction, site architecture, visual design, and a live React build.
+Harvest Communications produces theatre programmes for West End and touring productions — but had no website to show for it. I joined to design their site from the ground up: site architecture, UX, and UI, taking it from a blank canvas to a live website.
 
-
-
-
-
-![Harvest Communications homepage — live site designed and built in React/Vite/TypeScript.](/images/HarvestHomepage.png)
-
-
+![Harvest Communications homepage — live site, designed from the ground up.](/images/HarvestHomepage.png)
 
 ## A specialist agency with no digital presence.
 
-Harvest has been producing high-quality theatre programmes for years — for shows including Paddington the Musical — but had no website to signal that quality to the outside world. The brief was open-ended in the best way: build something that represents who Harvest is and where it's going.
+Harvest has been producing high-quality theatre programmes for years — for shows including Paddington the Musical — but had no website to signal that quality to the outside world. The brief was open-ended: build something that represents who Harvest is and where it's going, for the specialist B2B audience who'd be looking at it.
 
+## Designing for a specialist audience.
 
-
-## Designing and building at the same time.
-
-Starting from a partial brand direction — a logo and colour palette — I had to define everything else: tone of voice, typographic system, layout language, site structure. There was no designer handing off to a developer. I was both. Every design decision had to hold up in code.
-
-
-
-## Brand voice before brand visuals.
-
-Harvest's work sits at the intersection of performance, craft, and memory. Theatre programmes are the physical artefact an audience takes home — they're emotional objects, not just print collateral. That insight shaped everything: the headline, the warmth of the palette, and the decision to lead with product photography rather than abstract imagery.
+With no existing site to react to, I started with the audience: arts marketing managers and producers who already know Harvest's work and don't need persuading — just reassurance of quality and a clear way to get in touch. That shaped how I approached navigation, layout, and tone across the site.
 
 From there, I made three structural decisions:
 
-- **Focused navigation** — Arts Marketing, About, Contact. No noise. Built for a specialist B2B audience who know what they want.
-- **Work-first layout** — Programme photography as the visual hero, letting the quality of the output speak before any copy does.
-- **Editorial visual language** — Large confident typography, warm cream base, rich magenta accents. Contemporary but rooted in print craft.
+- **Focused navigation** — Arts Marketing, About, Contact. No noise. Built for a specialist B2B audience who know what they want and don't need to be sold to.
+- **Work-first layout** — Programme photography as the visual hero on the homepage, letting the quality of the output speak before any copy does.
+- **Editorial, content-led structure** — Pages built around large imagery and confident typography, so the site reads like a portfolio rather than a corporate brochure.
 
+## From no presence to live site.
 
-
-## From no presence to live brand.
-
-The site is live. Harvest Communications now has a digital identity that matches the quality of its work — and a platform to build from. Upcoming phases include a full work showcase, client case studies, and a streamlined enquiry flow.
+The site is live. Harvest Communications now has a digital presence that matches the quality of its work — and a platform to build from. Upcoming phases include a full work showcase, client case studies, and a streamlined enquiry flow.
 
 This project is ongoing — which means every design decision I make is immediately in production, tested by real users, and iterable in real time.
 
-
-
 ## What this project demonstrates.
 
-**End-to-end ownership** — Brand direction, site architecture, visual design, and live coded deployment. No handoff, no gaps. One person, full stack.
+**End-to-end design ownership** — Site architecture, UX, and UI for a brand-new digital presence, from first sketches through to a live site. No handoff, no gaps.
 
-**Design-to-code** — Built in React, TypeScript, and Vite. Design decisions were made and implemented by the same person — meaning the design and the build are always in sync.
+**Design with implementation in mind** — Decisions were made knowing they'd go straight into a live build, so the design holds up in the real world, not just in Figma.
 
-**Strategic UX for B2B** — A focused navigation, clear value proposition, and work-forward layout designed specifically for a specialist B2B audience making procurement decisions.
+**Strategic UX for B2B** — Focused navigation, clear value proposition, and a work-forward layout designed specifically for a specialist B2B audience making procurement decisions.
