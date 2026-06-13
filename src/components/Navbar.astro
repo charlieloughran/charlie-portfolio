@@ -93,6 +93,7 @@ import logoDark from "../assets/cl-dark.png";
     const isOpen = links?.classList.toggle("navbar__links--open");
     hamburger?.classList.toggle("navbar__hamburger--open", isOpen);
     hamburger?.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    if (isOpen) navbar?.classList.remove("navbar--hidden");
   }
 
   hamburger?.addEventListener("click", toggleMenu);
@@ -103,9 +104,23 @@ import logoDark from "../assets/cl-dark.png";
   });
 
   // Toggle a "scrolled" treatment once the page has moved away from
-  // the very top (previously dead CSS in the original site).
+  // the very top (previously dead CSS in the original site), and
+  // hide the navbar on scroll-down / reveal it on scroll-up to give
+  // content more room on long pages.
+  let lastScrollY = window.scrollY;
+
   const updateScrolled = () => {
-    navbar?.classList.toggle("navbar--scrolled", window.scrollY > 10);
+    const currentScrollY = window.scrollY;
+    navbar?.classList.toggle("navbar--scrolled", currentScrollY > 10);
+
+    const menuOpen = links?.classList.contains("navbar__links--open");
+    if (!menuOpen) {
+      const scrollingDown = currentScrollY > lastScrollY;
+      const pastThreshold = currentScrollY > 120;
+      navbar?.classList.toggle("navbar--hidden", scrollingDown && pastThreshold);
+    }
+
+    lastScrollY = currentScrollY;
   };
 
   updateScrolled();

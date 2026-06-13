@@ -20,11 +20,15 @@
   z-index: $z-index-navbar;
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: background-color $transition-base, box-shadow 0.9s ease;
+    transition: background-color $transition-base, box-shadow 0.9s ease, transform $transition-base;
   }
 
   &--scrolled {
     box-shadow: $shadow-navbar-scrolled;
+  }
+
+  &--hidden {
+    transform: translateY(-100%);
   }
 }
 

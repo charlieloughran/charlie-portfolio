@@ -15,25 +15,18 @@ const hasStructured = Boolean(
 ---
 
 <div class="pd" style={`--pd-accent: ${data.accent};`}>
-  <header class:list={["pd__hero", { "pd__hero--no-cover": !data.coverImage }]} data-reveal>
-    {data.coverImage && (
-      <div class="pd__cover">
-        <img src={data.coverImage} alt={data.title} class="pd__cover-image" />
-      </div>
-    )}
-    <div class="pd__nav">
-      <a href="/#work" class="pd__back">
-        <span class="pd__back-arrow">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
-        Back to work
-      </a>
-    </div>
-  </header>
+  <div class="pd__top" data-reveal>
+    <a href="/#work" class="pd__back">
+      <span class="pd__back-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      Back to work
+    </a>
+  </div>
 
-  <div class="pd__hero-content">
+  <div class="pd__hero-content" data-reveal>
     <div class="pd__meta">
       {data.category && <span class="pd__tag">{data.category}</span>}
       {data.year && <span class="pd__year">{data.year}</span>}
@@ -41,6 +34,12 @@ const hasStructured = Boolean(
     <h1 class="pd__title">{data.title}</h1>
     {data.subtitle && <p class="pd__subtitle">{data.subtitle}</p>}
   </div>
+
+  {data.coverImage && (
+    <div class="pd__cover" data-reveal>
+      <img src={data.coverImage} alt={data.title} class="pd__cover-image" />
+    </div>
+  )}
 
   <div class="pd__body">
     <aside class="pd__sidebar" data-reveal>

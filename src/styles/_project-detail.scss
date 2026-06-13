@@ -10,37 +10,13 @@
   padding-bottom: $space-10; // 8rem
 }
 
-// Hero / cover -------------------------------------------------
+// Top bar / back link ---------------------------------------------
 
-.pd__hero {
-  position: relative;
-  margin-bottom: $space-6; // 2rem
-}
-
-.pd__cover {
-  position: relative;
-  height: $pd-cover-height;
-  overflow: hidden;
-}
-
-.pd__cover-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-// Nav / back link ------------------------------------------------
-
-.pd__nav {
-  position: absolute;
-  top: $space-6;
-  left: 0;
-  right: 0;
-  z-index: 3;
+.pd__top {
   max-width: $content-max-width;
   margin: 0 auto;
-  padding: 0 $content-padding-inline;
+  // Clears the fixed navbar (logo height + vertical padding = $space-9).
+  padding: $space-9 $content-padding-inline 0;
 }
 
 .pd__back {
@@ -78,23 +54,28 @@
 
 .pd__hero-content {
   max-width: $content-max-width;
-  margin: $space-7 auto 2em; // breathing room below the cover image
+  margin: $space-5 auto $space-7;
   padding: 0 $content-padding-inline;
-  position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: $space-3; // 0.75rem
 }
 
-.pd__hero--no-cover {
-  // No cover image: give the hero enough height to host the absolutely
-  // positioned back link without it colliding with the title block below.
-  padding-top: $space-9;
+// Cover image --------------------------------------------------------
+
+.pd__cover {
+  max-width: $content-max-width;
+  margin: 0 auto $space-7;
+  padding: 0 $content-padding-inline;
 }
 
-.pd__hero--no-cover + .pd__hero-content {
-  margin-top: 0;
+.pd__cover-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  border-radius: $radius-xl;
+  border: 1px solid color-mix(in srgb, var(--color-border) 10%, transparent);
 }
 
 .pd__meta {
