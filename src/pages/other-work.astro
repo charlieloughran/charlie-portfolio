@@ -44,8 +44,6 @@ const items = [
 >
   <section class="other-work section-padding" id="other-work" data-reveal-section>
     <div class="container">
-      <a href="/" class="other-work__breadcrumb">&larr; Full portfolio</a>
-
       <div class="other-work__header" data-reveal>
         <div class="other-work__eyebrow">Other Work</div>
         <h1 class="other-work__title">
@@ -95,6 +93,17 @@ const items = [
           ))
         }
       </div>
+
+      <div class="other-work__footer" data-reveal>
+        <a href="/" class="other-work__home-link">
+          <span class="other-work__home-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          Return to home
+        </a>
+      </div>
     </div>
   </section>
 
@@ -120,19 +129,6 @@ const items = [
         color-mix(in srgb, var(--color-border) 25%, transparent),
         transparent
       );
-    }
-  }
-
-  .other-work__breadcrumb {
-    display: inline-block;
-    font-family: $font-family-secondary;
-    font-size: $font-size-sm;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    margin-bottom: $space-6;
-
-    &:hover {
-      color: var(--color-accent);
     }
   }
 
@@ -239,6 +235,41 @@ const items = [
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  .other-work__footer {
+    margin-top: $space-9;
+    text-align: center;
+  }
+
+  .other-work__home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: var(--color-text-muted);
+    font-family: $font-family-secondary;
+    font-size: $font-size-sm;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-accent);
+
+      .other-work__home-arrow {
+        @media (prefers-reduced-motion: no-preference) {
+          transform: translateX(-4px);
+        }
+      }
+    }
+  }
+
+  .other-work__home-arrow {
+    display: inline-flex;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform $transition-base;
     }
   }
 </style>

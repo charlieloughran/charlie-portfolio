@@ -87,12 +87,14 @@ import logoDark from "../assets/cl-dark.png";
     hamburger?.classList.remove("navbar__hamburger--open");
     links?.classList.remove("navbar__links--open");
     hamburger?.setAttribute("aria-expanded", "false");
+    hamburger?.setAttribute("aria-label", "Open menu");
   }
 
   function toggleMenu() {
     const isOpen = links?.classList.toggle("navbar__links--open");
     hamburger?.classList.toggle("navbar__hamburger--open", isOpen);
     hamburger?.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    hamburger?.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     if (isOpen) navbar?.classList.remove("navbar--hidden");
   }
 
