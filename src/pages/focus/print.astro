@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import FocusHero from "../../components/FocusHero.astro";
+import Portfolio from "../../components/Portfolio.astro";
+import About from "../../components/About.astro";
+import Contact from "../../components/Contact.astro";
+
+const FOCUS_KEY = "print";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) =>
+    (a.data.focusAreas[FOCUS_KEY] ?? 99) - (b.data.focusAreas[FOCUS_KEY] ?? 99)
+);
+---
+
+<Layout
+  title="Charlie Loughran — Print Designer"
+  description="Print design and production portfolio of Charlie Loughran: theatre programmes, layout systems, and print collateral."
+>
+  <FocusHero
+    roleLabel="Print Designer"
+    tagline="Layout · Production Systems · Theatre Programmes · InDesign"
+    intro="I've spent the last three years designing theatre programmes for a major UK & Ireland theatre operator, producing 100+ programmes across 50+ venues. I introduced paragraph, character, and object styles in InDesign to standardise layout and cut formatting time by around half, taking output from one programme a month to five. I care about getting print production systems right as much as the page design itself."
+    ctaLabel="View print work"
+  />
+  <Portfolio
+    projects={projects}
+    eyebrow="Print Work"
+    titleHtml="Case studies &<br /><em>print production</em>"
+    description="Selected projects with a print design or production focus."
+  />
+  <About />
+  <Contact />
+</Layout>

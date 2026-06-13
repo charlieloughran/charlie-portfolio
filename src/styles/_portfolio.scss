@@ -322,3 +322,9 @@
   max-width: 400px;
   line-height: $line-height-relaxed;
 }
+
+.portfolio__footer-actions {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+}

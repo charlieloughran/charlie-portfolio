@@ -20,7 +20,8 @@ focusAreas:
   ux-design: 2
   digital-design: 3
   web-ui-design: 3
-  brand-print: 2
+  brand: 3
+  print: 4
 role: UX / UI Designer
 timeline: 12 weeks
 metrics: []
@@ -36,9 +37,21 @@ ScriptMate is a mobile app concept designed to help theatre performers learn, re
 
 ![ScriptMate's core user journey — selecting a group and show, choosing a practice mode, and rehearsing lines via voice recording.](/images/ScriptMate2.png)
 
+## Research & personas
+
+I started by researching how amateur actors already learn lines and rehearse — reviewing existing line-learning apps (coldRead, Line Learner) and the way theatre companies coordinate through Facebook Groups, weighing up what worked and where each fell short. To ground the brief in real users, I built out personas covering the different people the app needed to serve: an aspiring actor balancing a day job with auditions, an amateur director managing a cast, a student performer, and a film director.
+
+![Persona for Parker Dunn, an aspiring actor balancing retail work with auditions, used to ground ScriptMate's design decisions around line-learning and rehearsal scheduling.](/images/ScriptMate-Persona-ParkerDunn.jpg)
+
+Parker's goals — focusing on performance rather than line-learning, and finding an app that keeps him organised around a busy schedule — directly shaped the decision to combine Learn, Rehearse, and Improve into a single Practice flow, and to build in a calendar and task system from the outset.
+
 ## Design Approach
 
-I began with competitor research across existing apps (coldRead, Line Learner) and tools already used by theatre companies (Facebook Groups), identifying what worked and what was missing. I then defined the problem through user personas — an aspiring actor, an amateur director, a student performer, and a film director — before mapping requirements for both actor and director roles. From there I moved through sitemap, lo-fi wireframes, and hi-fi screens in Adobe Illustrator, before building the interactive prototype in Adobe XD. The project went through two rounds of user testing with ten actors, with significant design changes made between rounds in response to feedback.
+From the personas, I mapped requirements for both actor and director roles, then moved through a sitemap, lo-fi wireframes, and hi-fi screens in Adobe Illustrator before building the interactive prototype in Adobe XD.
+
+The home screen went through several rounds of revision. The first version used a dark, monochromatic purple that early feedback flagged as flat and heavy, with too much empty space. I iterated through a brighter palette with accent colours and a custom illustrated background before settling on the final layout — reducing button sizes so the full menu was visible without scrolling, and adding the ScriptMate logo to the header.
+
+![Three iterations of ScriptMate's home screen — from the original dark monochromatic menu, through a brighter accent-colour version, to the final illustrated layout with the ScriptMate logo.](/images/ScriptMate-HomeScreen-Iterations.png)
 
 ## Key decisions
 
@@ -54,9 +67,19 @@ Presenting one line at a time kept the performer focused on delivery rather than
 
 The initial dark purple made the interface feel flat and heavy, with too much empty space. User testing flagged design and accessibility as average. Shifting to a lighter background with purple as an accent immediately improved legibility and the perceived quality of the prototype.
 
+## User Testing
+
+The prototype was tested with ten actors against ethical approval guidelines, scoring it across design, layout, usability, accessibility, and navigability. Layout, usability, and navigability all came back "Good", while design and accessibility landed at "Average" — with most comments pointing at the colour and visual design of the app.
+
+![User testing results from ten actors, rating ScriptMate across design, layout, usability, accessibility, and navigability — design and accessibility scored lowest, prompting the colour scheme redesign.](/images/ScriptMate-UserTesting-Results.png)
+
+That feedback drove the colour change and home screen redesign above. A second round of testing after the changes showed a marked improvement, with testers responding positively to the new colour scheme and the overall quality of the prototype — leaving only minor notes on logo placement.
+
 ## Outcome
 
-Delivered a 20-screen interactive prototype in Adobe XD covering onboarding, practice mode, virtual and in-person rehearsal, groups, tasks, calendar, and profile. A second round of user testing after the colour and layout changes showed a marked improvement in feedback, with testers responding positively to the redesign and the overall quality of the prototype.
+Delivered a 20-screen interactive prototype in Adobe XD covering onboarding, practice mode, virtual and in-person rehearsal, groups, tasks, calendar, and profile.
+
+![Overview of ScriptMate's final screen flow, including group and show selection, calendar, tasks, and the practice session setup.](/images/ScriptMate-AppFlow-Overview.png)
 
 ## If the project continued
 

@@ -6,9 +6,11 @@ import Portfolio from "../components/Portfolio.astro";
 import About from "../components/About.astro";
 import Contact from "../components/Contact.astro";
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured)
-);
+const projects = (await getCollection("projects")).sort((a, b) => {
+  const featuredDiff = Number(b.data.featured) - Number(a.data.featured);
+  if (featuredDiff !== 0) return featuredDiff;
+  return Number(b.data.year) - Number(a.data.year);
+});
 ---
 
 <Layout
