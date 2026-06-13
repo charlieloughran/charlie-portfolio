@@ -16,6 +16,11 @@ tags:
   - UI
   - React
   - TypeScript
+focusAreas:
+  ux-design: 3
+  digital-design: 1
+  web-ui-design: 1
+  brand-print: 1
 role: Creative Designer & Marketing Lead
 tools: Figma, React, TypeScript, Vite
 status: Live — ongoing

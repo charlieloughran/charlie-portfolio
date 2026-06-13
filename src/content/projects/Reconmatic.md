@@ -15,6 +15,11 @@ tags:
   - Digital
   - Sustainability
   - Figma
+focusAreas:
+  ux-design: 1
+  digital-design: 2
+  web-ui-design: 2
+  brand-print: 3
 role: UI Designer (Contract)
 timeline: 6 weeks
 metrics: []

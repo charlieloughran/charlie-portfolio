@@ -14,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  padding: calc(#{$space-7} + 0.5rem) 0 calc(#{$space-7} - 0.5rem);
+  padding: calc(#{$space-9} + #{$space-4}) 0 calc(#{$space-7} - 0.5rem);
   --hero-pointer-x: 50%;
   --hero-pointer-y: 50%;
 }
@@ -254,4 +254,58 @@
   .hero__name-line--offset {
     padding-left: $space-2;
   }
+
+  .hero {
+    padding-top: $space-11;
+  }
+
+  .hero--focus {
+    padding-top: $space-11;
+  }
 }
+
+// -------------------------------------------------------------
+// Focus landing page variant (/focus/*)
+// Shorter hero with a breadcrumb back to the full portfolio and a
+// role label beneath the name treatment.
+// -------------------------------------------------------------
+.hero--focus {
+  min-height: auto;
+  padding: calc(#{$space-10} + #{$space-2}) 0 #{$space-8};
+}
+
+.hero__breadcrumb {
+  align-self: flex-start;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.9rem;
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.6s ease both;
+  }
+}
+
+.hero__role {
+  font-family: $font-family-primary;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: $font-weight-semibold;
+  font-style: italic;
+  color: var(--color-accent);
+  margin-top: -#{$space-2};
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-up 0.7s ease both;
+    animation-delay: 0.42s;
+  }
+}
+

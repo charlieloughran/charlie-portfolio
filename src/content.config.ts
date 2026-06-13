@@ -15,6 +15,9 @@ const projects = defineCollection({
     coverImage: z.string().optional(),
     accent: z.string().default("#099"),
     tags: z.array(z.string()).default([]),
+    // Relevance ranking per "focus" landing page (lower = more relevant).
+    // Keys: "ux-design" | "digital-design" | "web-ui-design" | "brand-print"
+    focusAreas: z.record(z.string(), z.number()).default({}),
     description: z.string().optional(),
     role: z.string().optional(),
     timeline: z.string().optional(),

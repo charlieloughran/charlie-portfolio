@@ -16,6 +16,11 @@ tags:
   - Theatre
   - Prototyping
   - Brand
+focusAreas:
+  ux-design: 2
+  digital-design: 3
+  web-ui-design: 3
+  brand-print: 2
 role: UX / UI Designer
 timeline: 12 weeks
 metrics: []

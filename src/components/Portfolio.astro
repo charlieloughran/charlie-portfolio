@@ -9,22 +9,26 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   projects: CollectionEntry<"projects">[];
+  eyebrow?: string;
+  titleHtml?: string;
+  description?: string;
 }
 
-const { projects } = Astro.props;
+const {
+  projects,
+  eyebrow = "Selected Work",
+  titleHtml = "Case studies &<br /><em>recent projects</em>",
+  description = "A selection of projects across three years of work and study.",
+} = Astro.props;
 ---
 
 <section class="portfolio section-padding" id="work" data-reveal-section>
   <div class="container">
     <div class="portfolio__header" data-reveal>
-      <div class="portfolio__eyebrow">Selected Work</div>
-      <h2 class="portfolio__title">
-        Case studies &<br />
-        <em>recent projects</em>
-      </h2>
+      <div class="portfolio__eyebrow">{eyebrow}</div>
+      <h2 class="portfolio__title" set:html={titleHtml} />
       <p class="portfolio__description">
-        A selection of projects across three years of
-        work and study.
+        {description}
       </p>
     </div>
 

@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import FocusHero from "../../components/FocusHero.astro";
+import Portfolio from "../../components/Portfolio.astro";
+import About from "../../components/About.astro";
+import Contact from "../../components/Contact.astro";
+
+const FOCUS_KEY = "ux-design";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) =>
+    (a.data.focusAreas[FOCUS_KEY] ?? 99) - (b.data.focusAreas[FOCUS_KEY] ?? 99)
+);
+---
+
+<Layout
+  title="Charlie Loughran — UX Designer"
+  description="UX design portfolio of Charlie Loughran: research, wireframes, dashboards, and information architecture work."
+>
+  <FocusHero
+    roleLabel="UX Designer"
+    tagline="UX Research · Wireframes · Dashboards · IA"
+    intro="I focus on making complex systems usable, running UX audits, mapping user flows, and turning raw requirements into wireframes and prototypes that hold up under real use. My recent work includes redesigning a dashboard for a UK construction-sector decarbonisation tool, restructuring a university website's information architecture, and a mobile app concept built around the real rehearsal habits of theatre performers. I bring the same rigour to research and structure as I do to the final interface."
+    ctaLabel="View UX work"
+  />
+  <Portfolio
+    projects={projects}
+    eyebrow="UX Work"
+    titleHtml="Case studies &<br /><em>UX projects</em>"
+    description="Projects where the focus was research, structure, and usability."
+  />
+  <About />
+  <Contact />
+</Layout>
