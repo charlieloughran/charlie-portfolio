@@ -4,6 +4,7 @@ slug: theatre-programmes
 title: Theatre Programmes (UK & Ireland)
 subtitle: Print Production & Design Systems
 category: Print Design
+coverImage: "/images/small-island.png"
 featured: false
 year: 2026
 client: Harvest Communications
