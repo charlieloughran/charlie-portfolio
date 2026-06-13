@@ -68,12 +68,16 @@
   max-width: $content-max-width;
   margin: 0 auto $space-7;
   padding: 0 $content-padding-inline;
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: $space-5;
+  }
 }
 
 .pd__cover-image {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 8;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: $radius-xl;
   border: 1px solid color-mix(in srgb, var(--color-border) 10%, transparent);
@@ -132,7 +136,7 @@
 
   @media (max-width: $breakpoint-md) {
     grid-template-columns: 1fr;
-    gap: $space-6; // 2.5rem
+    gap: $space-8; // 4rem
   }
 }
 
