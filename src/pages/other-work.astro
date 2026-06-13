@@ -13,22 +13,25 @@ const items = [
     image: "/images/other-jack-grealish.png",
     caption:
       "A football fan-art concept exploring title screens, kit graphics, and club badge artwork built around Jack Grealish's move to Manchester City.",
+    video: "", // TODO: add link to motion graphic
   },
   {
     title: "Hope Mill Theatre — 3D Renders",
     image: "/images/other-hope-mill.png",
     caption:
       "3D renders of Hope Mill Theatre's auditorium, modelled in Blender from a floor plan and reference photos — exploring lighting, materials, and staging.",
+    video: "", // TODO: add link to render/walkthrough video
   },
   {
     title: "Modern Bedroom — 3D & VR",
-    image: "/images/other-modern-bedroom-vr.png",
+    image: "/images/other-modern-bedroom.png",
     caption:
       "A modern bedroom interior modelled and rendered for a VR walkthrough, then rebuilt as an interactive 3D environment with coded lighting and real-time rendering.",
+    video: "", // TODO: add YouTube link to walkthrough
   },
   {
     title: "CSI — Brand & Campaign Graphics",
-    image: "/images/other-csi-brand-set.png",
+    image: "/images/csi-carousel.png",
     caption:
       "A set of campaign carousels, sub-brand identities, and programme graphics produced for the Centre for Sustainable Innovation — Innovation Labs, the Five-C Network, and seasonal and affiliate content.",
   },
@@ -77,6 +80,16 @@ const items = [
               <div class="other-work__body">
                 <h2 class="other-work__card-title">{item.title}</h2>
                 <p class="other-work__caption">{item.caption}</p>
+                {item.video && (
+                  <a
+                    href={item.video}
+                    class="other-work__video-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Watch the video &rarr;
+                  </a>
+                )}
               </div>
             </div>
           ))
@@ -213,5 +226,19 @@ const items = [
     font-size: $font-size-base;
     color: var(--color-text-muted);
     line-height: $line-height-relaxed;
+  }
+
+  .other-work__video-link {
+    font-family: $font-family-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: var(--color-accent);
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: $space-1;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 </style>
