@@ -39,7 +39,7 @@ ScriptMate is a mobile app concept designed to help theatre performers learn, re
 
 ## Research & personas
 
-I started by researching how amateur actors already learn lines and rehearse — reviewing existing line-learning apps (coldRead, Line Learner) and the way theatre companies coordinate through Facebook Groups, weighing up what worked and where each fell short. To ground the brief in real users, I built out personas covering the different people the app needed to serve: an aspiring actor balancing a day job with auditions, an amateur director managing a cast, a student performer, and a film director.
+I love starting a project with research, so I began by looking at how amateur actors already learn lines and rehearse — reviewing existing line-learning apps (coldRead, Line Learner) and the way theatre companies coordinate through Facebook Groups, weighing up what worked and where each fell short. To ground the brief in real users, I built out personas covering the different people the app needed to serve: an aspiring actor balancing a day job with auditions, an amateur director managing a cast, a student performer, and a film director.
 
 ![Persona for Parker Dunn, an aspiring actor balancing retail work with auditions, used to ground ScriptMate's design decisions around line-learning and rehearsal scheduling.](/images/ScriptMate-Persona-ParkerDunn.jpg)
 
@@ -89,3 +89,5 @@ Delivered a 20-screen interactive prototype in Adobe XD covering onboarding, pra
 - Live rehearsal mode with hidden line prompts
 - Type-out-lines accessibility option
 - Multiple calendars for different productions
+
+This project taught me how much good research and testing changes a design — a lesson I've carried into every project since.

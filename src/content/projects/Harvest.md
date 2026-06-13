@@ -31,7 +31,7 @@ metrics: []
 
 ## Building a company's digital presence from nothing.
 
-Harvest Communications produces theatre programmes for West End and touring productions — but had no website to show for it. I joined to design their site from the ground up: site architecture, UX, and UI, taking it from a blank canvas to a live website.
+Harvest Communications produces theatre programmes for West End and touring productions — but didn't have a website to show for it. I joined to design their site from the ground up, and loved getting to shape everything from site architecture to UX and UI — taking it from a completely blank canvas to a live site.
 
 ![Harvest Communications homepage — live site, designed from the ground up.](/images/HarvestHomepage.png)
 
@@ -53,7 +53,7 @@ From there, I made three structural decisions:
 
 The site is live. Harvest Communications now has a digital presence that matches the quality of its work — and a platform to build from. Upcoming phases include a full work showcase, client case studies, and a streamlined enquiry flow.
 
-This project is ongoing — which means every design decision I make is immediately in production, tested by real users, and iterable in real time.
+This project is ongoing, which I really enjoy — every design decision I make goes straight into production, gets tested by real users, and I get to keep learning from how people actually use it.
 
 ## What this project demonstrates.
 
@@ -62,3 +62,5 @@ This project is ongoing — which means every design decision I make is immediat
 **Design with implementation in mind** — Decisions were made knowing they'd go straight into a live build, so the design holds up in the real world, not just in Figma.
 
 **Strategic UX for B2B** — Focused navigation, clear value proposition, and a work-forward layout designed specifically for a specialist B2B audience making procurement decisions.
+
+I'm proud of how far this has come from a blank page — and excited for what's next as the site grows.

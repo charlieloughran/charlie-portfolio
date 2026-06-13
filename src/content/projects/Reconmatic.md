@@ -28,7 +28,7 @@ metrics: []
 
 ## Turning a developer tool into a product people can actually use.
 
-Reconmatic is a decarbonisation platform for the UK construction sector. I was contracted by the University of Salford to redesign the dashboard from the ground up — transforming a raw, unusable interface into a clear, navigable product.
+Reconmatic is a decarbonisation platform for the UK construction sector. I was contracted by the University of Salford to redesign the dashboard from the ground up, and it was a brief I loved — turning a raw, hard-to-use interface into something clear, navigable, and genuinely nice to use.
 
 ![The original Reconmatic interface — a developer-built prototype with no UX thinking applied.](/images/dims-dashboard-original.png)
 
@@ -52,9 +52,9 @@ From there, I made three structural decisions:
 
 ## From prototype to product-ready.
 
-The redesigned interface gave project managers a dashboard they could scan, navigate, and understand without instruction. The development team received complete high-fidelity wireframes covering user flows, component states, layout, colour, and typography — ready to build from.
+The redesigned interface gave project managers a dashboard they could scan, navigate, and understand without instruction, and the development team received complete high-fidelity wireframes — covering user flows, component states, layout, colour, and typography — ready to build from.
 
-The project was paused due to funding constraints before reaching development. The design work stands as a complete first iteration — and a clear demonstration of what user-centred thinking applied to a complex B2B tool looks like in practice.
+The project was paused due to funding constraints before reaching development, but the design work stands as a complete first iteration, and one I'm proud of: a clear example of what user-centred thinking looks like when applied to a complex B2B tool.
 
 ## If the project continued.
 
@@ -62,3 +62,5 @@ The project was paused due to funding constraints before reaching development. T
 - Design the Dashboard home screen with emissions tracking data visualisations
 - Build out Materials and Products screens using the same card-based component system
 - Establish a full Figma component library to support design at scale
+
+It's exactly the kind of brief I love: messy, real, and full of opportunities to learn from how people actually work.

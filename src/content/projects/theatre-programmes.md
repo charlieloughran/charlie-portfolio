@@ -28,7 +28,7 @@ metrics: []
 
 ## From one programme a month to five.
 
-I design the theatre programmes for the venues and shows we work with — covers, cast and creative bios, "What's On" pages, sponsor and credits sections, the lot. I started doing this in 2023, and it's carried straight through into my current role: it's the work I do most often, and the one I've had the most time to refine.
+I design the theatre programmes for the venues and shows we work with — covers, cast and creative bios, "What's On" pages, sponsor and credits sections, the lot. I started doing this in 2023, and it's carried straight through into my current role. It's the work I do most often, and honestly one of my favourites — there's always some new edge case to design around.
 
 <!-- *[Image placeholder — suggested: a hero shot or montage of recent programme covers (e.g. Starter for Ten, Inspector Morse, Marriage Material). Save as `/images/theatre-hero.png` and add `coverImage: /images/theatre-hero.png` to the frontmatter above once ready.]* -->
 
@@ -62,3 +62,5 @@ It also means the work is consistent regardless of how tight the turnaround is: 
 **Process design with measurable impact** — a 5x increase in output and roughly 50% less time on formatting, achieved by changing the workflow rather than working faster.
 
 **Ownership of a recurring deliverable** — this is the project I've done longest and most often, and the one where I've had the most room to improve how the work gets done, not just what it looks like.
+
+It's also the project that's taught me the most about where good process actually pays off — and I'm always looking for the next thing to streamline.

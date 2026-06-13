@@ -28,7 +28,7 @@ metrics: []
 
 ## One system, two sites, one club.
 
-Worcester Warriors needed two websites that work as a pair: Sixways, the stadium's venue-hire and events site, and Warriors, the rugby club itself. Working on this as part of the team at HTDL, I designed the look and feel for both — building a shared visual system flexible enough to serve a corporate events venue and a sports club, while keeping the two brands cross-linked and recognisably part of the same organisation.
+Worcester Warriors needed two websites that work as a pair: Sixways, the stadium's venue-hire and events site, and Warriors, the rugby club itself. Working on this as part of the team at HTDL, I got to design the look and feel for both — building a shared visual system flexible enough to serve a corporate events venue and a sports club, while keeping the two brands feeling like part of the same family.
 
 ![Sixways homepage hero — "Your Venue Your Way", with the stadium nav and primary call to action.]
 
@@ -63,3 +63,5 @@ The "What's On" cards on Sixways and the "Latest News" cards on Warriors use the
 **Working within an existing brand family** — Designing for a club and its stadium meant every decision had to reinforce that these are two faces of one organisation, not two unrelated sites.
 
 **Agency delivery** — Designed as part of a client engagement at HTDL, working to existing brand guidelines and handing off component specs ready for development.
+
+Working across two brands at once taught me a lot about building systems that flex without breaking — exactly the kind of challenge I want more of.
