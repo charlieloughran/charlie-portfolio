@@ -19,7 +19,7 @@ if (targets.length > 0 && "IntersectionObserver" in window) {
         }
       }
     },
-    { threshold: 0.12 }
+    { threshold: 0.01 }
   );
 
   targets.forEach((target) => observer.observe(target));

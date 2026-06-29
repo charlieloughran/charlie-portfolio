@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Figtree', Avenir, Helvetica, sans-serif;
+    background: #fef6e7;
+    color: #352241;
+    padding: 48px;
+    width: 1440px;
+  }
+  .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ff4ebe; margin-bottom: 6px; }
+  h2 { font-size: 26px; font-weight: 700; color: #352241; margin-bottom: 40px; line-height: 1.2; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(53,34,65,0.4); margin-bottom: 14px; }
+  .divider { height: 1px; background: rgba(53,34,65,0.1); margin: 36px 0; }
+  .scroll-flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 8px; }
+  .flow-row { display: flex; align-items: stretch; gap: 0; }
+  .flow-connector { display: flex; flex-direction: column; align-items: center; width: 40px; flex-shrink: 0; }
+  .flow-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff4ebe; flex-shrink: 0; margin-top: 18px; }
+  .flow-dot.muted { background: rgba(53,34,65,0.2); }
+  .flow-line { width: 1.5px; flex: 1; background: rgba(53,34,65,0.12); min-height: 12px; }
+  .flow-node { flex: 1; padding: 14px 20px 14px 0; border-bottom: 1px solid rgba(53,34,65,0.08); display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .flow-node:last-child { border-bottom: none; }
+  .node-num { font-size: 10px; font-weight: 700; color: #ff4ebe; min-width: 20px; margin-top: 1px; }
+  .node-num.muted { color: rgba(53,34,65,0.3); }
+  .node-body { flex: 1; }
+  .node-name { font-size: 14px; font-weight: 700; color: #352241; margin-bottom: 2px; }
+  .node-note { font-size: 11px; color: rgba(53,34,65,0.55); line-height: 1.4; }
+  .node-link { font-size: 10px; font-weight: 700; color: #ff4ebe; background: rgba(255,78,190,0.08); border-radius: 0 4px 0 0; padding: 2px 7px; white-space: nowrap; align-self: flex-start; margin-top: 2px; }
+  .nav-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+  .nav-group { background: #fff; border: 1px solid rgba(53,34,65,0.1); border-radius: 0 12px 0 0; overflow: hidden; box-shadow: 0 1px 3px rgba(53,34,65,0.05); }
+  .nav-parent { background: #352241; color: #fef6e7; padding: 10px 14px; font-size: 12px; font-weight: 700; border-radius: 0 12px 0 0; }
+  .nav-children { padding: 10px 14px; display: flex; flex-direction: column; gap: 5px; }
+  .nav-child { font-size: 11px; color: rgba(53,34,65,0.6); padding-left: 10px; border-left: 2px solid rgba(255,78,190,0.3); }
+  .nav-single { background: #fff; border: 1px solid rgba(53,34,65,0.1); border-radius: 0 12px 0 0; padding: 10px 14px; font-size: 12px; font-weight: 600; color: rgba(53,34,65,0.65); box-shadow: 0 1px 3px rgba(53,34,65,0.05); display: flex; align-items: center; }
+  .footer-note { font-size: 11px; color: rgba(53,34,65,0.4); display: flex; align-items: flex-start; gap: 8px; margin-top: 20px; line-height: 1.5; }
+  .dot-pink { width: 6px; height: 6px; border-radius: 50%; background: #ff4ebe; flex-shrink: 0; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="eyebrow">Information Architecture</div>
+<h2>Harvest Communications</h2>
+<p class="section-label">Homepage — section order & rationale</p>
+<div class="scroll-flow">
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot"></div><div class="flow-line"></div></div>
+    <div class="flow-node">
+      <span class="node-num">01</span>
+      <div class="node-body"><div class="node-name">Hero</div><div class="node-note">Product visible immediately. "View Work" button anchors direct to portfolio.</div></div>
+    </div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot"></div><div class="flow-line"></div></div>
+    <div class="flow-node">
+      <span class="node-num">02</span>
+      <div class="node-body"><div class="node-name">Partnership in Production</div><div class="node-note">Service framed editorially. Establishes capability before asking for anything.</div></div>
+      <span class="node-link">→ Arts Marketing</span>
+    </div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot"></div><div class="flow-line"></div></div>
+    <div class="flow-node">
+      <span class="node-num">03</span>
+      <div class="node-body"><div class="node-name">Portfolio</div><div class="node-note">Bookshelf layout. Evidence of output before trust signals.</div></div>
+      <span class="node-link">→ Our Work</span>
+    </div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot muted"></div><div class="flow-line"></div></div>
+    <div class="flow-node">
+      <span class="node-num muted">04</span>
+      <div class="node-body"><div class="node-name">Client Logos</div><div class="node-note">Social proof. West End producers and major venues visible.</div></div>
+    </div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot muted"></div><div class="flow-line"></div></div>
+    <div class="flow-node">
+      <span class="node-num muted">05</span>
+      <div class="node-body"><div class="node-name">About</div><div class="node-note">Who we are, after capability and proof are established.</div></div>
+      <span class="node-link">→ About / Contact</span>
+    </div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot"></div><div class="flow-line"></div></div>
+    <div class="flow-node">
+      <span class="node-num">06</span>
+      <div class="node-body"><div class="node-name">Blog Preview</div><div class="node-note">3 most recent posts. Demonstrates expertise and active voice.</div></div>
+      <span class="node-link">→ Blog</span>
+    </div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-connector"><div class="flow-dot"></div></div>
+    <div class="flow-node">
+      <span class="node-num">07</span>
+      <div class="node-body"><div class="node-name">Contact</div><div class="node-note">Enquiry form with service selector. Captures intent at point of contact.</div></div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<p class="section-label">Full site — navigation structure</p>
+<div class="nav-grid">
+  <div class="nav-group">
+    <div class="nav-parent">Arts Marketing</div>
+    <div class="nav-children">
+      <div class="nav-child">Theatre Programmes</div>
+      <div class="nav-child">Print Production</div>
+      <div class="nav-child">Design</div>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-parent">About</div>
+    <div class="nav-children">
+      <div class="nav-child">Our Team</div>
+      <div class="nav-child">Testimonials</div>
+      <div class="nav-child">Careers</div>
+    </div>
+  </div>
+  <div class="nav-single">Our Work</div>
+  <div class="nav-single">Blog</div>
+  <div class="nav-single">Sustainability</div>
+  <div class="nav-single">Contact</div>
+  <div class="nav-single">FAQs</div>
+</div>
+<div class="footer-note">
+  <div class="dot-pink"></div>
+  Section order reflects the primary user's decision-making sequence: capability first, evidence second, trust signals third, contact last.
+</div>
+</body>
+</html>
