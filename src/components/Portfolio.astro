@@ -1,108 +1,73 @@
 ---
-// =============================================================
-// Portfolio
-// Case-study grid sourced from the `projects` content collection.
-// The first (featured) entry spans the full grid width. Cards
-// reveal with a staggered fade-up as they enter the viewport.
-// =============================================================
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
   projects: CollectionEntry<"projects">[];
-  eyebrow?: string;
-  titleHtml?: string;
-  description?: string;
 }
 
-const {
-  projects,
-  eyebrow = "Selected Work",
-  titleHtml = "Case studies &<br /><em>recent projects</em>",
-  description = "A selection of projects across three years of work and study.",
-} = Astro.props;
+const { projects } = Astro.props;
+
+const hasContent = (project: CollectionEntry<"projects">) =>
+  (project.body?.trim().split(/\s+/).length ?? 0) > 50;
 ---
 
 <section class="portfolio section-padding" id="work" data-reveal-section>
   <div class="container">
     <div class="portfolio__header" data-reveal>
-      <div class="portfolio__eyebrow">{eyebrow}</div>
-      <h2 class="portfolio__title" set:html={titleHtml} />
-      <p class="portfolio__description">
-        {description}
-      </p>
+      <div class="portfolio__eyebrow">Selected Work</div>
+      <h2 class="portfolio__title">Case studies &amp;<br /><em>recent projects</em></h2>
+      <p class="portfolio__description">A selection of UX projects across three years of work and study.</p>
     </div>
+  </div>
 
-    <div class="portfolio__grid">
-      {
-        projects.map((project, index) => (
-          <a
-            href={`/projects/${project.data.slug}`}
-            class={`portfolio__card${index === 0 ? " portfolio__card--featured" : ""}`}
-            style={`--color-card-accent: ${project.data.accent}`}
-            data-reveal
-            data-reveal-delay={Math.min(index + 1, 5)}
-          >
-            <div class="portfolio__media">
-              {project.data.coverImage ? (
-                <img
-                  class="portfolio__image"
-                  src={project.data.coverImage}
-                  alt={project.data.title}
-                  width="800"
-                  height={index === 0 ? "350" : "350"}
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <div class="portfolio__placeholder">
-                  <span class="portfolio__placeholder-text">Image coming soon</span>
-                  <div class="portfolio__placeholder-shape" aria-hidden="true" />
-                </div>
-              )}
+  <div class="portfolio__grid" data-portfolio-grid>
+    {projects.map((project, index) => (
+      <a
+        href={`/projects/${project.data.slug}`}
+        class="portfolio__card"
+        style={`--color-card-accent: ${project.data.accent}`}
+        data-reveal
+        data-reveal-delay={Math.min(index + 1, 3)}
+      >
+        <div class="portfolio__media">
+          {project.data.coverImage ? (
+            <img
+              class="portfolio__image"
+              src={project.data.coverImage}
+              alt={project.data.title}
+              width="800"
+              height="500"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          ) : (
+            <div class="portfolio__placeholder">
+              <div class="portfolio__placeholder-shape" aria-hidden="true" />
             </div>
+          )}
+        </div>
 
-            <div class="portfolio__body">
-              <div class="portfolio__meta">
-                <span class="portfolio__year">{project.data.year}</span>
-                <span class="portfolio__client">{project.data.client}</span>
-              </div>
-              <h3 class="portfolio__card-title">{project.data.title}</h3>
-              <p class="portfolio__subtitle">{project.data.subtitle}</p>
+        {!hasContent(project) && (
+          <span class="portfolio__coming-soon" aria-label="Coming soon">Coming Soon</span>
+        )}
+        <div class="portfolio__body">
+          <div class="portfolio__meta">
+            <span class="portfolio__year">{project.data.year}</span>
+            <span class="portfolio__client">{project.data.client}</span>
+          </div>
+          <h3 class="portfolio__card-title">{project.data.title}</h3>
+          <p class="portfolio__subtitle">{project.data.subtitle}</p>
+          {project.data.description && (
+            <p class="portfolio__description-text">{project.data.description}</p>
+          )}
+        </div>
 
-              {project.data.tags && project.data.tags.length > 0 && (
-                <div class="portfolio__tags">
-                  {project.data.tags.map((tag) => (
-                    <span class="portfolio__tag">{tag}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div class="portfolio__arrow" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path
-                  d="M4 14L14 4M14 4H7M14 4V11"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-
-    <div class="portfolio__footer" data-reveal>
-      <p class="portfolio__footer-text">
-        Want to see more? I have additional pieces in 3D, motion, and brand
-        work too.
-      </p>
-      <div class="portfolio__footer-actions">
-        <a href="/other-work" class="btn btn--ghost">Other work &rarr;</a>
-        <a href="/#contact" class="btn btn--ghost">Get in touch &#8599;</a>
-      </div>
-    </div>
+        <div class="portfolio__arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    ))}
   </div>
 </section>

@@ -4,23 +4,26 @@
 // Intro/bio header, skills summary grid, and experience timeline.
 // =============================================================
 
-const skills = [
-  {
-    category: "Design & UI",
-    items: ["Figma", "Adobe InDesign", "Illustrator", "Photoshop", "Layout Design", "Typography", "Brand Identity"],
-  },
-  {
-    category: "UX",
-    items: ["User-Centred Design", "Wireframing", "Prototyping", "UX Auditing", "Information Architecture", "Interaction Design", "Accessible Design"],
-  },
-  {
-    category: "Web & CMS",
-    items: ["React", "TypeScript", "Vite", "WordPress", "Umbraco", "Website Architecture"],
-  },
-  {
-    category: "Marketing",
-    items: ["Digital Marketing", "LinkedIn B2B", "Google Ads", "Analytics", "Content Strategy"],
-  },
+const tools = [
+  { name: "Figma",          logo: null },
+  { name: "Adobe XD",       logo: null },
+  { name: "Adobe InDesign", logo: null },
+  { name: "Illustrator",    logo: null },
+  { name: "Photoshop",      logo: null },
+  { name: "Miro",           logo: null },
+  { name: "Notion",         logo: null },
+  { name: "WordPress",      logo: null },
+  { name: "Umbraco",        logo: null },
+  { name: "Astro",          logo: null },
+];
+
+const clients = [
+  "Harvest Communications",
+  "University of Salford",
+  "HTDL",
+  "LOCRN Ltd",
+  "Sixways & Warriors",
+  "Centre for Sustainable Innovation",
 ];
 
 const timeline = [
@@ -74,31 +77,8 @@ const timeline = [
           and it's that intersection of UX/UI and digital design, where the
           work has a tangible impact, that I find most rewarding.
         </p> -->
-        <div class="about__education">
-          <span class="about__edu-badge">
-            BA (Hons) Digital Media &amp; XR
-            <span class="about__edu-separator" aria-hidden="true">·</span>
-            University of Salford
-            <span class="about__edu-separator" aria-hidden="true">·</span>
-            First Class Honours
-          </span>
-        </div>
-      </div>
-    </div>
 
-    <div class="about__skills" data-reveal data-reveal-delay="1">
-      {
-        skills.map((group) => (
-          <div class="about__skill-group">
-            <h4 class="about__skill-title">{group.category}</h4>
-            <div class="about__skill-list">
-              {group.items.map((item) => (
-                <span class="about__skill-item">{item}</span>
-              ))}
-            </div>
-          </div>
-        ))
-      }
+      </div>
     </div>
 
     <div class="about__timeline-wrap" data-reveal data-reveal-delay="2">
@@ -107,7 +87,7 @@ const timeline = [
         {
           timeline.map((entry) => (
             <li class="about__timeline-item">
-              <div class="about__timeline-dot" aria-hidden="true" />
+              <div class={`about__timeline-dot${entry.date.includes("Present") ? " about__timeline-dot--active" : ""}`} aria-hidden="true" />
               <div class="about__timeline-content">
                 <div class="about__timeline-meta">
                   <span class="about__timeline-date">{entry.date}</span>
@@ -119,6 +99,23 @@ const timeline = [
             </li>
           ))
         }
+      </ol>
+    </div>
+
+    <div class="about__timeline-wrap" data-reveal data-reveal-delay="3">
+      <h3 class="about__timeline-title">Education</h3>
+      <ol class="about__timeline">
+        <li class="about__timeline-item">
+          <div class="about__timeline-dot" aria-hidden="true" />
+          <div class="about__timeline-content">
+            <div class="about__timeline-meta">
+              <span class="about__timeline-date">2020 – 2023</span>
+              <span class="about__timeline-company">University of Salford</span>
+            </div>
+            <div class="about__timeline-role">BA (Hons) Digital Media &amp; XR</div>
+            <p class="about__timeline-detail">First Class Honours</p>
+          </div>
+        </li>
       </ol>
     </div>
   </div>

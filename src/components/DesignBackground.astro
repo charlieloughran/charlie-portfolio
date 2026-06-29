@@ -1,0 +1,541 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { otherWork } from "../data/otherWork";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="dsbg section-padding" id="design-background" data-reveal-section>
+  <div class="container">
+    <div class="dsbg__header" data-reveal>
+      <div class="dsbg__eyebrow">Design Background</div>
+      <h2 class="dsbg__title">Rooted in<br /><em>broad design</em></h2>
+      <p class="dsbg__description">Before specialising in UX I built hands-on experience across web, brand, print, 3D, and motion. That range informs every decision I make.</p>
+    </div>
+  </div>
+
+  <div class="dsbg__filters" role="group" aria-label="Filter by discipline">
+    <button class="dsbg__filter-btn dsbg__filter-btn--active-all" data-dsbg-filter="All" type="button">All</button>
+    <button class="dsbg__filter-btn" data-dsbg-filter="Web" type="button">Web</button>
+    <button class="dsbg__filter-btn" data-dsbg-filter="Brand" type="button">Brand</button>
+    <button class="dsbg__filter-btn" data-dsbg-filter="Print" type="button">Print</button>
+    <button class="dsbg__filter-btn" data-dsbg-filter="3D" type="button">3D</button>
+    <button class="dsbg__filter-btn" data-dsbg-filter="Motion" type="button">Motion</button>
+  </div>
+
+  <div class="dsbg__grid" data-dsbg-grid>
+
+      {projects.map((project, index) => (
+        <a
+          href={`/projects/${project.data.slug}`}
+          class="dsbg__card dsbg__card--linked"
+          data-dsbg-discipline={project.data.category.toLowerCase().includes("print") ? "Print" : project.data.category.toLowerCase().includes("web") ? "Web" : "Brand"}
+          data-reveal
+          data-reveal-delay={Math.min(index + 1, 3)}
+        >
+          <div class="dsbg__media">
+            {project.data.coverImage && (
+              <img class="dsbg__image" src={project.data.coverImage} alt={project.data.title} width="800" height="350" loading="lazy" decoding="async" />
+            )}
+            <div class="dsbg__read-overlay" aria-hidden="true">
+              <span class="dsbg__read-label">Read more</span>
+            </div>
+          </div>
+          <div class="dsbg__body">
+            <div class="dsbg__meta">
+              <div class="dsbg__arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                  <path d="M4 14L14 4M14 4H7M14 4V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="dsbg__card-title">{project.data.title}</h3>
+            <p class="dsbg__subtitle">{project.data.subtitle}</p>
+            <span class="dsbg__tag">{project.data.category}</span>
+          </div>
+        </a>
+      ))}
+
+      {otherWork.map((item, index) => (
+        <div
+          class={`dsbg__card${item.videoId ? " dsbg__card--video" : ""}`}
+          data-dsbg-discipline={item.discipline}
+          data-reveal
+          data-reveal-delay={Math.min(index + 1, 3)}
+          {...(item.videoId ? { "data-video-id": item.videoId, role: "button", tabindex: "0", "aria-label": `Play ${item.title}` } : {})}
+        >
+          <div class="dsbg__media">
+            <img class="dsbg__image" src={item.image} alt={item.title} width="800" height="350" loading="lazy" decoding="async" />
+            {item.videoId && (
+              <div class="dsbg__play-overlay" aria-hidden="true">
+                <div class="dsbg__play-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <span class="dsbg__play-label">Watch</span>
+              </div>
+            )}
+          </div>
+          <div class="dsbg__body">
+            <div class="dsbg__meta"></div>
+            <h3 class="dsbg__card-title">{item.title}</h3>
+            <p class="dsbg__subtitle">{item.subtitle}</p>
+            <span class="dsbg__year">{item.year}</span>
+            <span class="dsbg__tag">{item.tag}</span>
+          </div>
+        </div>
+      ))}
+
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <div class="video-modal__backdrop" id="videoModalBackdrop"></div>
+  <div class="video-modal__panel">
+    <button class="video-modal__close" id="videoModalClose" aria-label="Close video">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="video-modal__embed">
+      <iframe
+        id="videoModalFrame"
+        src=""
+        title="Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // --- Filter ---
+  const btns = document.querySelectorAll<HTMLButtonElement>("[data-dsbg-filter]");
+  const cards = document.querySelectorAll<HTMLElement>("[data-dsbg-discipline]");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.dsbgFilter ?? "All";
+      btns.forEach((b) => {
+        b.classList.remove("dsbg__filter-btn--active");
+        b.classList.remove("dsbg__filter-btn--active-all");
+      });
+      if (filter === "All") {
+        btn.classList.add("dsbg__filter-btn--active-all");
+      } else {
+        btn.classList.add("dsbg__filter-btn--active");
+      }
+      cards.forEach((card) => {
+        const match = filter === "All" || card.dataset.dsbgDiscipline === filter;
+        card.style.display = match ? "" : "none";
+      });
+    });
+  });
+
+  // --- Video Modal ---
+  const modal = document.getElementById("videoModal") as HTMLElement;
+  const backdrop = document.getElementById("videoModalBackdrop") as HTMLElement;
+  const closeBtn = document.getElementById("videoModalClose") as HTMLButtonElement;
+  const frame = document.getElementById("videoModalFrame") as HTMLIFrameElement;
+
+  function openModal(videoId: string) {
+    frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    frame.src = "";
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-video-id]").forEach((card) => {
+    card.addEventListener("click", () => openModal(card.dataset.videoId!));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card.dataset.videoId!); }
+    });
+  });
+
+  backdrop.addEventListener("click", closeModal);
+  closeBtn.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+</script>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .dsbg {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: $space-6;
+      right: $space-6;
+      height: 1px;
+      background: linear-gradient(to right, transparent, color-mix(in srgb, var(--color-border) 25%, transparent), transparent);
+    }
+  }
+
+  .dsbg__header {
+    max-width: 640px;
+    margin-bottom: $space-8;
+  }
+
+  .dsbg__eyebrow {
+    font-family: $font-family-primary;
+    font-size: $font-size-2xs;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: $space-4;
+  }
+
+  .dsbg__title {
+    font-family: $font-family-primary;
+    font-size: $font-size-display-sm;
+    font-weight: $font-weight-extrabold;
+    text-transform: uppercase;
+    line-height: $line-height-tight;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+    margin-bottom: $space-4;
+    em { font-style: italic; color: var(--color-secondary); }
+  }
+
+  .dsbg__description {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    color: var(--color-text-primary);
+    line-height: $line-height-relaxed;
+  }
+
+  .dsbg__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-4;
+    padding-inline: $space-5;
+
+    @media (min-width: $breakpoint-lg) { padding-inline: $space-6; }
+    @media (max-width: $breakpoint-md) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: $breakpoint-sm) { grid-template-columns: 1fr; padding-inline: $space-4; }
+  }
+
+  .dsbg__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-card);
+    border-radius: 64px 0 64px 0;
+    overflow: hidden;
+    text-decoration: none;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform $transition-base, box-shadow $transition-base;
+    }
+
+    &--linked:hover {
+      outline: 1.5px solid var(--color-accent);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transform: translateY(-4px);
+        box-shadow: $shadow-card-hover;
+      }
+
+      .dsbg__image { @media (prefers-reduced-motion: no-preference) { transform: scale(1.04); } }
+      .dsbg__read-overlay { opacity: 1; }
+    }
+
+    &--video {
+      cursor: pointer;
+
+      &:hover {
+        outline: 1.5px solid var(--color-accent);
+
+        @media (prefers-reduced-motion: no-preference) {
+          transform: translateY(-4px);
+          box-shadow: $shadow-card-hover;
+        }
+
+        .dsbg__image { @media (prefers-reduced-motion: no-preference) { transform: scale(1.04); } }
+        .dsbg__play-overlay { opacity: 1; }
+      }
+
+      &:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    }
+
+  }
+
+  .dsbg__media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: $portfolio-media-height;
+    overflow: hidden;
+    border-radius: 64px 0 0 0;
+    background-color: var(--color-accent);
+  }
+
+  .dsbg__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @media (prefers-reduced-motion: no-preference) { transition: transform $transition-slow; }
+  }
+
+  // Play overlay
+  .dsbg__play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    @media (prefers-reduced-motion: no-preference) { transition: opacity $transition-base; }
+  }
+
+  .dsbg__play-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-text-primary);
+    @media (prefers-reduced-motion: no-preference) { transition: transform $transition-fast; }
+
+    .dsbg__play-overlay:hover & { transform: scale(1.08); }
+  }
+
+  .dsbg__play-label {
+    font-family: $font-family-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .dsbg__read-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    @media (prefers-reduced-motion: no-preference) { transition: opacity $transition-base; }
+  }
+
+  .dsbg__read-label {
+    font-family: $font-family-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+
+  .dsbg__year {
+    font-family: $font-family-secondary;
+    font-size: $font-size-2xs;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary, #888);
+    margin-top: 0.1rem;
+  }
+
+  .dsbg__tag {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: $space-2;
+    font-family: $font-family-secondary;
+    font-size: $font-size-2xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #003333;
+    background-color: rgb(255, 124, 181);
+    border-radius: $radius-pill;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .dsbg__body {
+    padding: $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+  }
+
+  .dsbg__card-title {
+    font-family: $font-family-primary;
+    font-size: $font-size-card-title;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .dsbg__subtitle {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    color: var(--color-text-primary);
+    line-height: $line-height-relaxed;
+  }
+
+  .dsbg__meta {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $space-1;
+  }
+
+  .dsbg__card:hover .dsbg__arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .dsbg__arrow {
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity $transition-fast, transform $transition-fast;
+    }
+  }
+
+  .dsbg__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    padding-inline: $space-5;
+    margin-bottom: $space-4;
+    @media (min-width: $breakpoint-lg) { padding-inline: $space-6; }
+    @media (max-width: $breakpoint-sm) { padding-inline: $space-4; }
+  }
+
+  .dsbg__filter-btn {
+    flex: 1;
+    text-align: center;
+    font-family: $font-family-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--color-border) 40%, transparent);
+    border-radius: 64px 0 64px 0;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+
+    &--active {
+      color: #003333;
+      background-color: rgb(255, 124, 181);
+      border-color: rgb(255, 124, 181);
+
+      &:hover {
+        color: #003333;
+        background-color: rgb(255, 124, 181);
+        border-color: rgb(255, 124, 181);
+      }
+    }
+
+    &--active-all {
+      color: var(--color-text-primary);
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+
+      &:hover {
+        color: var(--color-text-primary);
+        background-color: var(--color-accent-hover);
+        border-color: var(--color-accent-hover);
+      }
+    }
+  }
+
+  // ---- Video Modal ----
+  .video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-5;
+
+    &[hidden] { display: none; }
+  }
+
+  .video-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  .video-modal__panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    background: var(--color-bg-card);
+    border-radius: 64px 0 64px 0;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .video-modal__close {
+    position: absolute;
+    top: $space-4;
+    right: $space-4;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background $transition-fast;
+
+    &:hover { background: rgba(0, 0, 0, 0.8); }
+  }
+
+  .video-modal__embed {
+    position: relative;
+    padding-bottom: 56.25%; // 16:9
+    height: 0;
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+</style>

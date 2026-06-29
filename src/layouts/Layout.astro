@@ -72,25 +72,8 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
 
-    <!-- Theme bootstrap: runs before paint to avoid a flash of the
-         wrong theme. Persists the user's explicit choice; otherwise
-         falls back to the OS preference on first visit. Also marks
-         the document as JS-enabled so scroll-reveal animation can be
-         opted into progressively. -->
     <script is:inline>
-      (function () {
-        try {
-          var stored = localStorage.getItem("theme");
-          var theme =
-            stored === "light" || stored === "dark"
-              ? stored
-              : window.matchMedia("(prefers-color-scheme: light)").matches
-                ? "light"
-                : "dark";
-          document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {}
-        document.documentElement.classList.add("js");
-      })();
+      document.documentElement.classList.add("js");
     </script>
   </head>
   <body>

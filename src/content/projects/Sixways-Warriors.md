@@ -24,6 +24,7 @@ focusAreas:
 role: UI Designer
 tools: Figma
 metrics: []
+description: "One system, two sites, one club."
 ---
 
 ## One system, two sites, one club.

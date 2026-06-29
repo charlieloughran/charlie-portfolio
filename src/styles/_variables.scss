@@ -51,19 +51,7 @@ $color-white: #f5f5f5;
   --color-card-accent: var(--color-accent);
 }
 
-:root[data-theme="light"] {
-  --color-bg: #{$color-teal-50};
-  --color-bg-card: #{$color-teal-25};
 
-  --color-accent: #{$color-teal-500};
-  --color-accent-hover: #{$color-teal-600};
-  --color-secondary: #{$color-maroon-900};
-
-  --color-text-primary: #{$color-teal-800};
-  --color-text-muted: #{$color-teal-700};
-
-  --color-border: #{$color-teal-700};
-}
 
 // -------------------------------------------------------------
 // Typography

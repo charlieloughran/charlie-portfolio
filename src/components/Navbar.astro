@@ -6,24 +6,15 @@
 // applies a `--scrolled` style once the page has been scrolled.
 // =============================================================
 import { Image } from "astro:assets";
-import ThemeToggle from "./ThemeToggle.astro";
 import logoLight from "../assets/cl-light.png";
-import logoDark from "../assets/cl-dark.png";
 ---
 
 <header class="navbar" data-navbar>
   <a href="/" class="navbar__logo-link" aria-label="Charlie Loughran, home">
-    <Image
+<Image
       src={logoLight}
-      alt=""
-      class="navbar__logo-image navbar__logo-image--light"
-      width={126}
-      height={32}
-    />
-    <Image
-      src={logoDark}
-      alt=""
-      class="navbar__logo-image navbar__logo-image--dark"
+      alt="Charlie Loughran"
+      class="navbar__logo-image"
       width={126}
       height={32}
     />
@@ -34,17 +25,10 @@ import logoDark from "../assets/cl-dark.png";
     <a href="/#about" class="navbar__link" data-navbar-link>About</a>
     <a href="/#contact" class="navbar__link" data-navbar-link>Connect</a>
 
-    <div class="navbar__theme-toggle--mobile">
-      <ThemeToggle />
-    </div>
   </nav>
 
   <div class="navbar__right">
-    <div class="navbar__theme-toggle--desktop">
-      <ThemeToggle />
-    </div>
-
-    <button
+<button
       type="button"
       class="navbar__hamburger"
       data-hamburger
@@ -62,19 +46,7 @@ import logoDark from "../assets/cl-dark.png";
 <style lang="scss">
   @use "../styles/variables" as *;
 
-  // Show the light-coloured logo on dark backgrounds and the
-  // dark-coloured logo on light backgrounds.
-  .navbar__logo-image--dark {
-    display: none;
-  }
 
-  :global(html[data-theme="light"] .navbar__logo-image--light) {
-    display: none;
-  }
-
-  :global(html[data-theme="light"] .navbar__logo-image--dark) {
-    display: block;
-  }
 </style>
 
 <script>

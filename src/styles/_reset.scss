@@ -40,6 +40,13 @@ svg {
   max-width: 100%;
 }
 
+/* Broken images: hide alt text & icon, let container background show through */
+img {
+  color: transparent;       /* hides alt text */
+  font-size: 0;             /* collapses alt text space */
+  text-indent: -9999px;     /* belt-and-braces for alt text */
+}
+
 input,
 button,
 textarea,

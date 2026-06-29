@@ -25,6 +25,7 @@ focusAreas:
 role: UX / UI Designer
 timeline: 12 weeks
 metrics: []
+description: "A Major Project"
 ---
 
 ## Helping actors rehearse anywhere, with anyone.

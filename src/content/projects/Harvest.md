@@ -25,6 +25,7 @@ focusAreas:
 role: UX/UI Designer & Developer
 timeline: January 2026 – Present
 metrics: []
+description: "Building a website from scratch, end to end."
 ---
 
 ## Building a website from scratch, end to end.

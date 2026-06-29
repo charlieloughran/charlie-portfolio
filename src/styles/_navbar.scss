@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: $space-6;
+  padding: $space-6 $space-6 $space-4;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,7 +171,7 @@
     color: var(--color-text-primary);
 
     &:hover {
-      color: var(--color-text-muted);
+      color: var(--color-accent);
     }
 
     &:active {

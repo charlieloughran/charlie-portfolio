@@ -36,7 +36,7 @@
   padding: 0;
 
   &:hover {
-    color: var(--pd-accent, var(--color-accent));
+    color: var(--color-accent);
 
     .pd__back-arrow {
       @media (prefers-reduced-motion: no-preference) {

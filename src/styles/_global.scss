@@ -29,7 +29,7 @@ body {
 // Every section anchors offset for the fixed navbar + smooth scroll.
 section {
   width: 100%;
-  scroll-margin-top: $space-12 + $space-9; // ~200px, matches navbar height + breathing room
+  scroll-margin-top: $space-8; // 64px — clears fixed navbar with breathing room
 }
 
 // -------------------------------------------------------------

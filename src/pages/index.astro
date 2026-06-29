@@ -4,21 +4,36 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Portfolio from "../components/Portfolio.astro";
 import About from "../components/About.astro";
+import DesignBackground from "../components/DesignBackground.astro";
 import Contact from "../components/Contact.astro";
 
-const projects = (await getCollection("projects")).sort((a, b) => {
-  const featuredDiff = Number(b.data.featured) - Number(a.data.featured);
-  if (featuredDiff !== 0) return featuredDiff;
+const allProjects = (await getCollection("projects")).sort((a, b) => {
+  // Featured first, then best UX score, then newest
+  if (b.data.featured !== a.data.featured) return Number(b.data.featured) - Number(a.data.featured);
+  const aUx = a.data.focusAreas["ux-design"] ?? 99;
+  const bUx = b.data.focusAreas["ux-design"] ?? 99;
+  if (aUx !== bUx) return aUx - bUx;
   return Number(b.data.year) - Number(a.data.year);
 });
+
+// Any project with UX/UI in its category goes into case studies
+const caseStudies = allProjects.filter((p) =>
+  p.data.category.toLowerCase().includes("ux")
+);
+
+// Everything else surfaces in the Design Background section, newest first
+const designProjects = allProjects
+  .filter((p) => !caseStudies.includes(p))
+  .sort((a, b) => Number(b.data.year) - Number(a.data.year));
 ---
 
 <Layout
-  title="Charlie Loughran: Digital Designer"
-  description="Portfolio of Charlie Loughran, a digital designer based in London, with work spanning UX, product, web and brand."
+  title="Charlie Loughran: UX Designer"
+  description="Portfolio of Charlie Loughran, a UX designer based in London, with work spanning UX, product, web and brand."
 >
   <Hero />
-  <Portfolio projects={projects} />
+  <Portfolio projects={caseStudies} />
+  <DesignBackground projects={designProjects} />
   <About />
   <Contact />
 </Layout>

@@ -24,6 +24,7 @@ focusAreas:
 role: UI Designer (Contract)
 timeline: 6 weeks
 metrics: []
+description: "Turning a developer tool into a product people can actually use."
 ---
 
 ## Turning a developer tool into a product people can actually use.

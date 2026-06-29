@@ -7,6 +7,7 @@
 // =============================================================
 
 .portfolio {
+  padding-top: $space-7;
   position: relative;
 
   &::before {
@@ -97,10 +98,16 @@
 .portfolio__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: $space-5;
+  gap: $space-4;
+  padding-inline: $space-5;
+
+  @media (min-width: $breakpoint-lg) {
+    padding-inline: $space-6;
+  }
 
   @media (max-width: $breakpoint-sm) {
     grid-template-columns: 1fr;
+    padding-inline: $space-4;
   }
 }
 
@@ -109,15 +116,18 @@
   display: flex;
   flex-direction: column;
   background-color: var(--color-bg-card);
-  border-radius: $radius-lg;
+  border-radius: 64px 0 64px 0;
   overflow: hidden;
   text-decoration: none;
+
 
   @media (prefers-reduced-motion: no-preference) {
     transition: transform $transition-base, box-shadow $transition-base;
   }
 
   &:hover {
+    outline: 1.5px solid var(--color-accent);
+
     @media (prefers-reduced-motion: no-preference) {
       transform: translateY(-4px);
       box-shadow: $shadow-card-hover;
@@ -142,23 +152,21 @@
   }
 }
 
-.portfolio__card--featured {
-  grid-column: 1 / -1;
 
-  .portfolio__card-title {
-    font-size: $font-size-card-title-featured;
-  }
-}
 
 // -------------------------------------------------------------
 // Media
 // -------------------------------------------------------------
 .portfolio__media {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: $portfolio-media-height;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  border-radius: 64px 0 0 0;
+  background-color: var(--color-accent);
 }
 
 .portfolio__image {
@@ -213,7 +221,7 @@
   flex-direction: column;
   gap: 0.45rem;
   flex: 1;
-  padding: $space-5 $space-5 $space-5;
+  padding: $space-5;
 }
 
 .portfolio__meta {
@@ -240,11 +248,11 @@
 
 .portfolio__card-title {
   font-family: $font-family-primary;
-  font-size: $font-size-card-title;
-  font-weight: $font-weight-semibold;
+  font-size: $font-size-card-title-featured;
+  font-weight: $font-weight-bold;
   color: var(--color-text-primary);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .portfolio__subtitle {
@@ -327,4 +335,75 @@
   display: flex;
   gap: $space-3;
   flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+// -------------------------------------------------------------
+// Coming Soon badge — shown on cards with no body content yet
+// -------------------------------------------------------------
+.portfolio__coming-soon {
+  position: absolute;
+  top: $space-3;
+  right: $space-3;
+  font-family: $font-family-secondary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: rgb(210, 60, 120);
+  border-radius: $radius-pill;
+  padding: 0.25rem 0.65rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+// -------------------------------------------------------------
+// Discipline filters
+// -------------------------------------------------------------
+.portfolio__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin-top: $space-6;
+  margin-bottom: $space-2;
+}
+
+.portfolio__filter-btn {
+  flex: 1;
+  text-align: center;
+  font-family: $font-family-secondary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-border) 40%, transparent);
+  border-radius: 64px 0 64px 0;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: color $transition-fast, background-color $transition-fast, border-color $transition-fast;
+  }
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  &--active {
+    color: var(--color-bg);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+
+    &:hover {
+      color: var(--color-bg);
+    }
+  }
 }
